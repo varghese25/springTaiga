@@ -1,4 +1,4 @@
-Taiga And GitHub Intergration<br> Date 10/09/2024<br>
+Taiga And GitHub Intergration<b><br> Date 10/09/2024<br>
 
 Step 1 : Payload URL from taiga<br>
 Step 2 : Create Repo(springTaiga)<br>
