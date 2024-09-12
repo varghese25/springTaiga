@@ -18,7 +18,7 @@ jobs:
 
     - name: Send updates to Taiga
       env:
-        TAIGA_API_URL: ${{ https://api.taiga.io }}
+        TAIGA_API_URL: "https://api.taiga.io"
         TAIGA_AUTH_TOKEN: ${{ afb50e1cbf8b4a228851710cc630ea57 }}
       run: |
         curl -X POST "$TAIGA_API_URL/github-hook?project=1585351" \
@@ -31,3 +31,4 @@ jobs:
           },
           "action": "update"
         }'
+        
