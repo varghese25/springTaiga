@@ -13,8 +13,8 @@ jobs:
 
     - name: Send updates to Taiga
       env:
-        TAIGA_API_URL: ${{ secrets.https://api.taiga.io/api/v1/github-hook?project=1585351 }}
-        TAIGA_AUTH_TOKEN: ${{ secrets.afb50e1cbf8b4a228851710cc630ea57 }}
+        TAIGA_API_URL: ${{https://api.taiga.io/api/v1/github-hook?project=1585351 }}
+        TAIGA_AUTH_TOKEN: ${{afb50e1cbf8b4a228851710cc630ea57 }}
       run: |
         curl -X POST "$TAIGA_API_URL/api/v1/github/webhook/" \
         -H "Authorization: Bearer $TAIGA_AUTH_TOKEN" \
