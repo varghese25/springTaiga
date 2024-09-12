@@ -11,15 +11,15 @@ on:
 jobs:
   update-taiga:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Send updates to Taiga
       env:
-        TAIGA_API_URL: ${{secrets.https://api.taiga.io/api/v1/github-hook?project=1585351 }}
-        TAIGA_AUTH_TOKEN: ${{secrets.afb50e1cbf8b4a228851710cc630ea57 }}
+        TAIGA_API_URL: ${{ secrets.https://api.taiga.io }}
+        TAIGA_AUTH_TOKEN: ${{ secrets.afb50e1cbf8b4a228851710cc630ea57 }}
       run: |
         curl -X POST "$TAIGA_API_URL/github-hook?project=1585351" \
         -H "Authorization: Bearer $TAIGA_AUTH_TOKEN" \
