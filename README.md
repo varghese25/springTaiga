@@ -7,3 +7,15 @@ Which events would you like to trigger this webhook?<br>
 Send me everything.
 
 https://api.taiga.io/api/v1/github-hook (all events) // Everything Fine it show green Tick<br>
+
+
+<br>---------------------------------------------------------------------------------------<br>
+Date 11-09-2024<br>
+
+taiga-integration.yml<br>
+Created a directory in https://github.com/varghese25/springTaiga<br>
+.github/workflows/<br>
+Create a file inside that folder (ie. springTaiga/.github/workflows/) naming<br>
+Or else simple put the uploaded file (taiga-integration.yml) into folder<br>
+
+<br>---------------------------------------------------------------------------------------<br>
