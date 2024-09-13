@@ -70,4 +70,4 @@ jobs:<br>
  Referencing the Token as a Secret<br>
  
  The TAIGA_AUTH_TOKEN should be stored securely as a secret in GitHub.<br>
- You can add this secret by going to your repository’s Settings > Secrets and variables > Actions, and create a secret <br>called TAIGA_AUTH_TOKEN with the value being your authentication token (afb50e1cbf8b4a228851710cc630ea57)...<br>
+ You can add this secret by going to your repository’s Settings > Secrets and variables > Actions, and create a secret <br>called TAIGA_AUTH_TOKEN with the value being your authentication token (afb50e1cbf8b4a228851710cc630ea57)....<br>
