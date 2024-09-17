@@ -71,3 +71,29 @@ jobs:<br>
  
  The TAIGA_AUTH_TOKEN should be stored securely as a secret in GitHub.<br>
  You can add this secret by going to your repository’s Settings > Secrets and variables > Actions, and create a secret <br>called TAIGA_AUTH_TOKEN with the value being your authentication token (afb50e1cbf8b4a228851710cc630ea57)....<br>
+
+
+<br>---------------------------------------------------------------------------------------<br>
+
+17-09-2024<br>
+
+Installled miniKube <br>
+install latest kubernetes/ kubectl <br>
+Minikube start<br>
+Minikube stop<br>
+ Kubectl get svc<br>
+Kubectl get pods<br>
+
+<br>----<br>
+Importatnt docker command<br> 
+docker pull, <br>
+docker run,<br>
+docker exec,<br>
+docker logs,<br>
+docker build,<br>
+docker tag,<br>
+docker push,<br>
+
+docker images,<br>
+docker ps,<br>
+docker system prune<br>
