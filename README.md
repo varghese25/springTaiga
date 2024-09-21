@@ -655,4 +655,327 @@ Hello created by Manoj and Tiju# ps
 # top
 /bin/sh: 4: top: not found
 #
+<br>---------------------------------------------<br>
+
+
+## Docker basic Command
+PS C:\Users\u> docker search hello
+NAME                    DESCRIPTION                                     STARS     OFFICIAL
+nginxdemos/hello        NGINX webserver that serves a simple page co…   157
+silasbw/hello                                                           0
+bihero/hello            'Hello' word microservice                       0
+cy4n/hello              springboot hello playground                     1
+circleci/hello          This image is for internal use                  0
+widdix/hello            Hello World!                                    0
+kelseyhightower/hello                                                   10
+johanburati/hello       Http server for testing traffic between mach…   0
+raeffs/hello                                                            0
+lizrice/hello           Simple examples of containerizing Golang cod…   0
+cfgarden/hello                                                          0
+anafomin/hello                                                          0
+corticoai/hello                                                         0
+monopole/hello                                                          1
+mulspace/hello          Hello docker for web. It will run python web…   0
+tomvo12/hello                                                           0
+sigmadev/hello                                                          0
+ovhplatform/hello                                                       1
+jeromebaude/hello                                                       0
+singatwaria/hello                                                       0
+treeder/hello                                                           0
+cloudecho/hello         Hello                                           0
+acarmack/hello                                                          0
+chiphwang/hello                                                         0
+tanzufun/hello                                                          1
+PS C:\Users\u> docker pull hello-world
+Using default tag: latest
+latest: Pulling from library/hello-world
+c1ec31eb5944: Pull complete
+Digest: sha256:91fb4b041da273d5a3273b6d587d62d518300a6ad268b28628f74997b93171b2
+Status: Downloaded newer image for hello-world:latest
+docker.io/library/hello-world:latest
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview hello-world
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED         SIZE
+rmanojcse06/spring-boot-hello     0.0.1              9d4fd7dce456   4 days ago      420MB
+my-spring-boot-app                latest             1dfccde513ea   4 days ago      351MB
+tiju/my-spring-boot-app           latest             1dfccde513ea   4 days ago      351MB
+varghese25/my-spring-boot-app     latest             1dfccde513ea   4 days ago      351MB
+yourusername/my-spring-boot-app   latest             1dfccde513ea   4 days ago      351MB
+gcr.io/k8s-minikube/kicbase       v0.0.45            aeed0e1d4642   2 weeks ago     1.28GB
+postgres                          latest             b781f3a53e61   6 weeks ago     432MB
+postgres                          13.16-alpine3.20   ed06eaccad7e   6 weeks ago     238MB
+hello-world                       latest             d2c94e258dcb   16 months ago   13.3kB
+openjdk                           17-jdk-alpine      264c9bdce361   3 years ago     326MB
+PS C:\Users\u> docker rmi hello-world
+Untagged: hello-world:latest
+Untagged: hello-world@sha256:91fb4b041da273d5a3273b6d587d62d518300a6ad268b28628f74997b93171b2
+Deleted: sha256:d2c94e258dcb3c5ac2798d32e1249e42ef01cba4841c2234249495f87264ac5a
+Deleted: sha256:ac28800ec8bb38d5c35b49d45a6ac4777544941199075dff8c4eb63e093aa81e
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED       SIZE
+rmanojcse06/spring-boot-hello     0.0.1              9d4fd7dce456   4 days ago    420MB
+tiju/my-spring-boot-app           latest             1dfccde513ea   4 days ago    351MB
+varghese25/my-spring-boot-app     latest             1dfccde513ea   4 days ago    351MB
+yourusername/my-spring-boot-app   latest             1dfccde513ea   4 days ago    351MB
+my-spring-boot-app                latest             1dfccde513ea   4 days ago    351MB
+gcr.io/k8s-minikube/kicbase       v0.0.45            aeed0e1d4642   2 weeks ago   1.28GB
+postgres                          latest             b781f3a53e61   6 weeks ago   432MB
+postgres                          13.16-alpine3.20   ed06eaccad7e   6 weeks ago   238MB
+openjdk                           17-jdk-alpine      264c9bdce361   3 years ago   326MB
+PS C:\Users\u> docker pull hello-world
+Using default tag: latest
+latest: Pulling from library/hello-world
+c1ec31eb5944: Pull complete
+Digest: sha256:91fb4b041da273d5a3273b6d587d62d518300a6ad268b28628f74997b93171b2
+Status: Downloaded newer image for hello-world:latest
+docker.io/library/hello-world:latest
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview hello-world
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED         SIZE
+rmanojcse06/spring-boot-hello     0.0.1              9d4fd7dce456   4 days ago      420MB
+my-spring-boot-app                latest             1dfccde513ea   4 days ago      351MB
+tiju/my-spring-boot-app           latest             1dfccde513ea   4 days ago      351MB
+varghese25/my-spring-boot-app     latest             1dfccde513ea   4 days ago      351MB
+yourusername/my-spring-boot-app   latest             1dfccde513ea   4 days ago      351MB
+gcr.io/k8s-minikube/kicbase       v0.0.45            aeed0e1d4642   2 weeks ago     1.28GB
+postgres                          latest             b781f3a53e61   6 weeks ago     432MB
+postgres                          13.16-alpine3.20   ed06eaccad7e   6 weeks ago     238MB
+hello-world                       latest             d2c94e258dcb   16 months ago   13.3kB
+openjdk                           17-jdk-alpine      264c9bdce361   3 years ago     326MB
+PS C:\Users\u> docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+PS C:\Users\u> docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+a2a3a435f387   hello-world   "/hello"   44 seconds ago   Exited (0) 39 seconds ago             relaxed_borg
+PS C:\Users\u> docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+PS C:\Users\u> docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED              STATUS                          PORTS     NAMES
+044c1cf201d4   hello-world   "/hello"   12 seconds ago       Exited (0) 8 seconds ago                  youthful_bhabha
+a2a3a435f387   hello-world   "/hello"   About a minute ago   Exited (0) About a minute ago             relaxed_borg
+PS C:\Users\u> docker run --name myHello hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+PS C:\Users\u> docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                          PORTS     NAMES
+cd4adf9301a4   hello-world   "/hello"   13 seconds ago   Exited (0) 9 seconds ago                  myHello
+044c1cf201d4   hello-world   "/hello"   2 minutes ago    Exited (0) About a minute ago             youthful_bhabha
+a2a3a435f387   hello-world   "/hello"   3 minutes ago    Exited (0) 3 minutes ago                  relaxed_borg
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED         SIZE
+rmanojcse06/spring-boot-hello     0.0.1              9d4fd7dce456   4 days ago      420MB
+my-spring-boot-app                latest             1dfccde513ea   4 days ago      351MB
+tiju/my-spring-boot-app           latest             1dfccde513ea   4 days ago      351MB
+varghese25/my-spring-boot-app     latest             1dfccde513ea   4 days ago      351MB
+yourusername/my-spring-boot-app   latest             1dfccde513ea   4 days ago      351MB
+gcr.io/k8s-minikube/kicbase       v0.0.45            aeed0e1d4642   2 weeks ago     1.28GB
+postgres                          latest             b781f3a53e61   6 weeks ago     432MB
+postgres                          13.16-alpine3.20   ed06eaccad7e   6 weeks ago     238MB
+hello-world                       latest             d2c94e258dcb   16 months ago   13.3kB
+openjdk                           17-jdk-alpine      264c9bdce361   3 years ago     326MB
+PS C:\Users\u> docker rmi hello-world
+Error response from daemon: conflict: unable to remove repository reference "hello-world" (must force) - container a2a3a435f387 is using its referenced image d2c94e258dcb
+PS C:\Users\u> docker rm cd4adf9301a4
+cd4adf9301a4
+PS C:\Users\u> docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS C:\Users\u> docker ls
+docker: 'ls' is not a docker command.
+See 'docker --help'
+PS C:\Users\u> docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+044c1cf201d4   hello-world   "/hello"   4 minutes ago   Exited (0) 4 minutes ago             youthful_bhabha
+a2a3a435f387   hello-world   "/hello"   6 minutes ago   Exited (0) 6 minutes ago             relaxed_borg
+PS C:\Users\u> docker run --name TijuHello hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+PS C:\Users\u> docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+af2ad1b8f827   hello-world   "/hello"   9 seconds ago   Exited (0) 5 seconds ago             TijuHello
+044c1cf201d4   hello-world   "/hello"   5 minutes ago   Exited (0) 5 minutes ago             youthful_bhabha
+a2a3a435f387   hello-world   "/hello"   6 minutes ago   Exited (0) 6 minutes ago             relaxed_borg
+PS C:\Users\u> docker rm af2ad1b8f827
+af2ad1b8f827
+PS C:\Users\u> docker ls
+docker: 'ls' is not a docker command.
+See 'docker --help'
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED         SIZE
+rmanojcse06/spring-boot-hello     0.0.1              9d4fd7dce456   4 days ago      420MB
+my-spring-boot-app                latest             1dfccde513ea   4 days ago      351MB
+tiju/my-spring-boot-app           latest             1dfccde513ea   4 days ago      351MB
+varghese25/my-spring-boot-app     latest             1dfccde513ea   4 days ago      351MB
+yourusername/my-spring-boot-app   latest             1dfccde513ea   4 days ago      351MB
+gcr.io/k8s-minikube/kicbase       v0.0.45            aeed0e1d4642   2 weeks ago     1.28GB
+postgres                          latest             b781f3a53e61   6 weeks ago     432MB
+postgres                          13.16-alpine3.20   ed06eaccad7e   6 weeks ago     238MB
+hello-world                       latest             d2c94e258dcb   16 months ago   13.3kB
+openjdk                           17-jdk-alpine      264c9bdce361   3 years ago     326MB
+PS C:\Users\u> docker container ls -a
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+044c1cf201d4   hello-world   "/hello"   6 minutes ago   Exited (0) 6 minutes ago             youthful_bhabha
+a2a3a435f387   hello-world   "/hello"   7 minutes ago   Exited (0) 7 minutes ago             relaxed_borg
+PS C:\Users\u> docker rmi hello-world
+Error response from daemon: conflict: unable to remove repository reference "hello-world" (must force) - container 044c1cf201d4 is using its referenced image d2c94e258dcb
+PS C:\Users\u> docker rm 044c1cf201d4
+044c1cf201d4
+PS C:\Users\u> docker container ls -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+a2a3a435f387   hello-world   "/hello"   10 minutes ago   Exited (0) 10 minutes ago             relaxed_borg
+PS C:\Users\u> docker rm a2a3a435f387
+a2a3a435f387
+PS C:\Users\u> docker container ls -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS C:\Users\u> docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+PS C:\Users\u> docker container ls -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                     PORTS     NAMES
+ae71337af281   hello-world   "/hello"   10 seconds ago   Exited (0) 6 seconds ago             gifted_kirch
+PS C:\Users\u> docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED              STATUS                          PORTS     NAMES
+ae71337af281   hello-world   "/hello"   About a minute ago   Exited (0) About a minute ago             gifted_kirch
+PS C:\Users\u> docker run alpine ls
+Unable to find image 'alpine:latest' locally
+latest: Pulling from library/alpine
+43c4264eed91: Already exists
+Digest: sha256:beefdbd8a1da6d2915566fde36db9db0b524eb737fc57cd1367effd16dc0d06d
+Status: Downloaded newer image for alpine:latest
+bin
+dev
+etc
+home
+lib
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+PS C:\Users\u> docker run -it alphine sh
+Unable to find image 'alphine:latest' locally
+docker: Error response from daemon: pull access denied for alphine, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+PS C:\Users\u> docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS C:\Users\u> docker run -it alphine sh
+Unable to find image 'alphine:latest' locally
+docker: Error response from daemon: pull access denied for alphine, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+PS C:\Users\u> docker exec it ae71337af281
+Error response from daemon: No such container: it
+PS C:\Users\u>
+
 
