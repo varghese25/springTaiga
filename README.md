@@ -978,4 +978,285 @@ PS C:\Users\u> docker exec it ae71337af281
 Error response from daemon: No such container: it
 PS C:\Users\u>
 
+<br>--------------------------------------------------------------------------<br>
 
+
+                     ##Docker Command & Practise
+
+
+
+Docker : https://www.youtube.com/watch?v=0O_FxUMCmYc
+
+
+Practical introduction to docker architecture, commands, images and containers.
+- docker pull
+- docker run
+- docker start
+- docker exec
+- docker stop
+- docker restart
+
+
+
+docker pull hello-world #Pull the images#
+
+docker image ls #List the image#
+
+docker rmi hello-world #rmi remove image hello-world#
+
+docker run hello-world #Execute OutPut display result as: Hello from Docker! and exit from the container #
+
+docker ps #Show running #
+
+docker ps -a  #showa all running container Even Stopped Container#
+
+docker run --name Varghese25 hello-world   #this used created my Own name container  as varghese25 to pulled hello-world image #
+
+docker container ls -a (docker ps -a)
+
+docker run hello-world #Unaavailable locally it pull from docker registry it download image and container give us the outPut#
+
+
+Alpine
+
+docker run alpine
+
+docker image ls
+
+docker ps -a
+
+docker run alpine ls
+
+docker ps -a
+
+
+
+Open in Terminal 1
+docker run -it alpine sh (it interactive sh shell commands can be writter) 
+#
+Open in Terminal 2
+We can see the Termainal 1  --> its say that shell is running Status is  Up 2 minutes
+C:\Users\u>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS         PORTS     NAMES
+b33fa8702f8c   alpine    "sh"      2 minutes ago   Up 2 minutes             confident_bell
+
+# bin    dev    etc    home   lib    media  mnt    opt    proc   root   run    sbin   srv    sys    tmp    usr    var
+
+# ls
+/ # apk add wget
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/main/x86_64/APKINDEX.tar.gz
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/community/x86_64/APKINDEX.tar.gz
+(1/4) Installing libunistring (1.2-r0)
+(2/4) Installing libidn2 (2.3.7-r0)
+(3/4) Installing pcre2 (10.43-r0)
+(4/4) Installing wget (1.24.5-r0)
+Executing busybox-1.36.1-r29.trigger
+OK: 11 MiB in 18 packages
+/ #exit
+
+docker ps #once exit can't se the working container will be closed#
+
+
+docker start c9f938e4888d #To start container with container Id or Name Example alphine##
+
+Open New Termainal or Existing Terminal to check the container Working or not
+
+docker exec -it b33fa8702f8c sh #Exec -it to run again the container#
+
+if you stop docker running container will terminate from all terminal
+
+docker restart b33fa8702f8c #Restart the conatiner with conatiner name#
+----------------------------------------------------------------------------------------------------------
+
+
+ creating images and sharing
+ 
+ docker pull httpd
+ 
+ 
+  docker run -d --name WebServerTiju -p 9090:80 httpd #port exposing 9090:80 localhost. webservers by default listen 80 port run's inside container which will forward local host 9090	 #
+  
+  
+  PS C:\Users\u> docker run -d --name WebServerTiju -p 9090:80 httpd
+  
+229f96783dce643bc64650e3ae138a5324390b468a93ca00be5aedcea498f03d
+
+PS C:\Users\u> docker ps -a
+CONTAINER ID   IMAGE         COMMAND              CREATED          STATUS                        PORTS                  NAMES
+229f96783dce   httpd         "httpd-foreground"   6 minutes ago    Up 6 minutes                  0.0.0.0:9090->80/tcp   WebServerTiju
+
+Step 1: Go any browser
+Step 2:  http://localhost:9090/
+Step 3: Output will display As "It Works"
+
+
+
+
+docker exec -it WebServerTiju bash
+root@229f96783dce:/usr/local/apache2# cd htdocs/
+root@229f96783dce:/usr/local/apache2/htdocs# ls
+index.html
+root@229f96783dce:/usr/local/apache2/htdocs#
+
+root@229f96783dce:/usr/local/apache2/htdocs# cat index.html
+<html><body><h1>It works!</h1></body></html>
+root@229f96783dce:/usr/local/apache2/htdocs# cat > mypage.html
+This is my Docker Page and Commands                                                       #Control D for exit fromTyping#
+root@229f96783dce:/usr/local/apache2/htdocs#
+
+
+OutPut 
+http://localhost:9090/mypage.html
+
+
+This is my Docker Page and Commands
+
+
+
+
+root@229f96783dce:/usr/local/apache2/htdocs# exit
+exit
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug WebServerTiju
+    Learn more at https://docs.docker.com/go/debug-cli/
+	
+	
+	
+PS C:\Users\u> docker ps
+CONTAINER ID   IMAGE     COMMAND              CREATED          STATUS          PORTS                  NAMES
+229f96783dce   httpd     "httpd-foreground"   18 minutes ago   Up 18 minutes   0.0.0.0:9090->80/tcp   WebServerTiju
+
+
+---------------Add - A Chnaged -C
+
+PS C:\Users\u> docker diff WebServerTiju
+C /usr
+C /usr/local
+C /usr/local/apache2
+C /usr/local/apache2/htdocs
+A /usr/local/apache2/htdocs/mypage.html
+C /usr/local/apache2/logs
+A /usr/local/apache2/logs/httpd.pid
+C /root
+A /root/.bash_history
+PS C:\Users\u>
+
+
+PS C:\Users\u> docker commit WebServerTiju  (New Image Id Created)
+sha256:b988aa501844a108ab58efcca1eb573fcf728ff3876f819a5ad4a64156bb7664
+s
+
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED          SIZE
+<none>                            <none>             b988aa501844   18 seconds ago   148MB  #new imageId match#
+
+PS C:\Users\u> docker ps
+CONTAINER ID   IMAGE     COMMAND              CREATED          STATUS          PORTS                  NAMES
+229f96783dce   httpd     "httpd-foreground"   28 minutes ago   Up 28 minutes   0.0.0.0:9090->80/tcp   WebServerTiju
+
+
+
+PS C:\Users\u> docker ps
+CONTAINER ID   IMAGE     COMMAND              CREATED          STATUS          PORTS                  NAMES
+229f96783dce   httpd     "httpd-foreground"   28 minutes ago   Up 28 minutes   0.0.0.0:9090->80/tcp   WebServerTiju
+PS C:\Users\u> docker stop WebServerTiju
+WebServerTiju
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED          SIZE
+<none>                            <none>             b988aa501844   10 minutes ago   148MB
+rmanojcse06/spring-boot-hello     0.0.1              9d4fd7dce456   6 days ago       420MB
+tiju/my-spring-boot-app           latest             1dfccde513ea   6 days ago       351MB
+varghese25/my-spring-boot-app     latest             1dfccde513ea   6 days ago       351MB
+yourusername/my-spring-boot-app   latest             1dfccde513ea   6 days ago       351MB
+my-spring-boot-app                latest             1dfccde513ea   6 days ago       351MB
+alpine                            latest             91ef0af61f39   2 weeks ago      7.8MB
+gcr.io/k8s-minikube/kicbase       v0.0.45            aeed0e1d4642   2 weeks ago      1.28GB
+postgres                          latest             b781f3a53e61   6 weeks ago      432MB
+postgres                          13.16-alpine3.20   ed06eaccad7e   6 weeks ago      238MB
+httpd                             latest             9cb0a2315602   2 months ago     148MB
+hello-world                       latest             d2c94e258dcb   17 months ago    13.3kB
+openjdk                           17-jdk-alpine      264c9bdce361   3 years ago      326MB
+PS C:\Users\u> docker run -d --name myOwnServer  -p 5070:80 b988aa501844
+1d3c8532d2082e0e595c2ef617ca1ce890c532ead3c8cc2dbab6742dd587c20b
+
+
+
+PS C:\Users\u> docker ps  #Our Own Image ID#
+CONTAINER ID   IMAGE          COMMAND              CREATED              STATUS              PORTS                  NAMES
+1d3c8532d208   b988aa501844   "httpd-foreground"   About a minute ago   Up About a minute   0.0.0.0:5070->80/tcp   myOwnServer
+
+
+http://localhost:5070/mypage.html
+
+This is my Docker Page and Commands
+
+
+
+
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED          SIZE
+<none>                            <none>             b988aa501844   14 minutes ago   148MB
+
+PS C:\Users\u> docker tag b988aa501844 myWebserver:Version1
+
+Error parsing reference: "myWebserver:Version1" is not a valid repository/tag: invalid reference format: repository name (library/myWebserver) must be lowercase
+PS C:\Users\u> docker tag b988aa501844 mywebserver:version1
+
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED          SIZE
+mywebserver                       version1           b988aa501844   16 minutes ago   148MB
+
+PS C:\Users\u> docker save mywebserver:version1 > mywebserver-version1.tar   #Alternative COMMAND both does samework docker save -o mywebserver-version1.tar #
+
+
+PS C:\Users\u> ls
+
+
+    Directory: C:\Users\u
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+
+-a----           9/23/24   3:22 PM      139280510 mywebserver-version1.tar
+-a----           9/20/24   2:18 PM            325 service.yaml
+
+
+ docker load -i mywebserver-version1.tar // To share file to other's it similar to pull commmad to check our outPut to view locally with send to docker Hub
+ 
+ 
+ 
+ PS C:\Users\u> docker login
+Authenticating with existing credentials...
+Login Succeeded
+PS C:\Users\u> docker push varghese25/mywebserver:version1
+The push refers to repository [docker.io/varghese25/mywebserver]
+An image does not exist locally with the tag: varghese25/mywebserver
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED          SIZE
+mywebserver                       version1           b988aa501844   32 minutes ago   148MB
+rmanojcse06/spring-boot-hello     0.0.1              9d4fd7dce456   6 days ago       420MB
+my-spring-boot-app                latest             1dfccde513ea   6 days ago       351MB
+tiju/my-spring-boot-app           latest             1dfccde513ea   6 days ago       351MB
+varghese25/my-spring-boot-app     latest             1dfccde513ea   6 days ago       351MB
+yourusername/my-spring-boot-app   latest             1dfccde513ea   6 days ago       351MB
+alpine                            latest             91ef0af61f39   2 weeks ago      7.8MB
+gcr.io/k8s-minikube/kicbase       v0.0.45            aeed0e1d4642   2 weeks ago      1.28GB
+postgres                          latest             b781f3a53e61   6 weeks ago      432MB
+postgres                          13.16-alpine3.20   ed06eaccad7e   6 weeks ago      238MB
+httpd                             latest             9cb0a2315602   2 months ago     148MB
+hello-world                       latest             d2c94e258dcb   17 months ago    13.3kB
+openjdk                           17-jdk-alpine      264c9bdce361   3 years ago      326MB
+
+
+PS C:\Users\u> docker tag mywebserver:version1 varghese25/mywebserver
+
+
+PS C:\Users\u> docker image ls
+REPOSITORY                        TAG                IMAGE ID       CREATED          SIZE
+mywebserver                       version1           b988aa501844   38 minutes ago   148MB
+varghese25/mywebserver            latest             b988aa501844   38 minutes ago   148MB
+<br>------------------------------------------------------------------------------------------------------------------------<br>
+
+                     
