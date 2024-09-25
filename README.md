@@ -1257,6 +1257,35 @@ PS C:\Users\u> docker image ls
 REPOSITORY                        TAG                IMAGE ID       CREATED          SIZE
 mywebserver                       version1           b988aa501844   38 minutes ago   148MB
 varghese25/mywebserver            latest             b988aa501844   38 minutes ago   148MB
-<br>------------------------------------------------------------------------------------------------------------------------<br>
 
-                     
+<br>------------------------------------------------------------------------------------------------------------------------<br>
+##Date 25-09-2024<br>
+
+ Kubernetes (k8S) from k to s 8 letters in short k8s <br>
+
+
+ kubectl (client) #Master server which talk to k8s Api response shows as output similiar to docker tools running docker machine showed us docker out same kubectl#<br>
+ 
+ 
+ minikube (single-node cluster)<br>
+ 
+ kubeadm    <br>
+ 
+ node -> computer machine or virtural machine<br>
+ 
+ pod -> container<br>
+ 
+ 
+
+##Linux(Ubutu)<br>
+
+varghese@DESKTOP-OODIU93:~$ alias k=kubectl<br>
+
+varghese@DESKTOP-OODIU93:~$ k version --client<br>
+
+Client Version: v1.30.2<br>
+Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3<br>
+varghese@DESKTOP-OODIU93:~$ pwd<br>
+/home/varghese<br>
+varghese@DESKTOP-OODIU93:~$<br>
+ 
