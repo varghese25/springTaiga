@@ -1288,4 +1288,177 @@ Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3<br>
 varghese@DESKTOP-OODIU93:~$ pwd<br>
 /home/varghese<br>
 varghese@DESKTOP-OODIU93:~$<br>
+
+
+
+<br>-------------------------------------------------------------------------------------<br>
+
+
+Date 26-09-2024 K8s (https://www.youtube.com/watch?v=7g5HLFg9QMI&list=PL5eh956CtlETZMJEMR866PCS2YNg_3O6d)
+
+PS C:\Users\u> Set-Alias m minikube
+
+PS C:\Users\u> minikube delete
+* Deleting "minikube" in docker ...
+* Deleting container "minikube" ...
+* Removing C:\Users\u\.minikube\machines\minikube ...
+* Removed all traces of the "minikube" cluster.
+
+PS C:\Users\u> minikube update-check
+CurrentVersion: v1.34.0
+LatestVersion: v1.34.0
+
+PS C:\Users\u> m start --driver=docker
+* minikube v1.34.0 on Microsoft Windows 10 Pro 10.0.19045.4957 Build 19045.4957
+* Using the docker driver based on user configuration
+* Using Docker Desktop driver with root privileges
+* Starting "minikube" primary control-plane node in "minikube" cluster
+* Pulling base image v0.0.45 ...
+* Creating docker container (CPUs=4, Memory=3000MB) ...
+! Failing to connect to https://registry.k8s.io/ from inside the minikube container
+* To pull new external images, you may need to configure a proxy: https://minikube.sigs.k8s.io/docs/reference/networking/proxy/
+* Preparing Kubernetes v1.31.0 on Docker 27.2.0 ...
+  - Generating certificates and keys ...
+  - Booting up control plane ...
+  - Configuring RBAC rules ...
+* Configuring bridge CNI (Container Networking Interface) ...
+* Verifying Kubernetes components...
+  - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+* Enabled addons: storage-provisioner, default-storageclass
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> m status
+
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+PS C:\Users\u> m version
+minikube version: v1.34.0
+commit: 210b148df93a80eb872ecbeb7e35281b3c582c61
+
+PS C:\Users\u> docker ps
+
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED          STATUS          PORTS                                                                                                                                  NAMES
+fbc9c3817d01   gcr.io/k8s-minikube/kicbase:v0.0.45   "/usr/local/bin/entr…"   49 minutes ago   Up 49 minutes   127.0.0.1:51682->22/tcp, 127.0.0.1:51678->2376/tcp, 127.0.0.1:51680->5000/tcp, 127.0.0.1:51681->8443/tcp, 127.0.0.1:51679->32443/tcp   minikube
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> docker exec -it minikube bash
+root@minikube:/#exit
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> m ssh
+docker@minikube:~$
+PS C:\Users\u> m ssh
+docker@minikube:~$   #docker@minikube is a node other words virtual machine#
+docker@minikube:~$
+docker@minikube:~$
+docker@minikube:~$
+docker@minikube:~$ docker ps
+docker@minikube:~$ docker ps #Master node how container running we can check below#
+CONTAINER ID   IMAGE                        COMMAND                  CREATED          STATUS          PORTS     NAMES
+8280c3feab8d   6e38f40d628d                 "/storage-provisioner"   50 minutes ago   Up 50 minutes             k8s_storage-provisioner_storage-provisioner_kube-system_c0616760-dc06-4863-b269-b6d222d729ca_0
+0d4c606ed0cc   cbb01a7bd410                 "/coredns -conf /etc…"   50 minutes ago   Up 50 minutes             k8s_coredns_coredns-6f6b679f8f-h49rl_kube-system_ab450272-2c88-47b8-a0ea-4d801893e276_0
+6c7bdd786781   ad83b2ca7b09                 "/usr/local/bin/kube…"   50 minutes ago   Up 50 minutes             k8s_kube-proxy_kube-proxy-t5sx7_kube-system_36148bed-87f6-4308-9c3d-4a29790cea65_0
+dc91a9809039   registry.k8s.io/pause:3.10   "/pause"                 50 minutes ago   Up 50 minutes             k8s_POD_storage-provisioner_kube-system_c0616760-dc06-4863-b269-b6d222d729ca_0
+37143475f67e   registry.k8s.io/pause:3.10   "/pause"                 50 minutes ago   Up 50 minutes             k8s_POD_coredns-6f6b679f8f-h49rl_kube-system_ab450272-2c88-47b8-a0ea-4d801893e276_0
+118c73c9a2c9   registry.k8s.io/pause:3.10   "/pause"                 50 minutes ago   Up 50 minutes             k8s_POD_kube-proxy-t5sx7_kube-system_36148bed-87f6-4308-9c3d-4a29790cea65_0
+09cf1515a99e   045733566833                 "kube-controller-man…"   51 minutes ago   Up 51 minutes             k8s_kube-controller-manager_kube-controller-manager-minikube_kube-system_40f5f661ab65f2e4bfe41ac2993c01de_2
+adbbc2825349   604f5db92eaa                 "kube-apiserver --ad…"   52 minutes ago   Up 52 minutes             k8s_kube-apiserver_kube-apiserver-minikube_kube-system_9e315b3a91fa9f6f7463439d9dac1a56_0
+fc17a65ca445   2e96e5913fc0                 "etcd --advertise-cl…"   52 minutes ago   Up 52 minutes             k8s_etcd_etcd-minikube_kube-system_a5363f4f31e043bdae3c93aca4991903_0
+8b118bddf2ce   1766f54c897f                 "kube-scheduler --au…"   52 minutes ago   Up 52 minutes             k8s_kube-scheduler_kube-scheduler-minikube_kube-system_e039200acb850c82bb901653cc38ff6e_0
+6838c9099afe   registry.k8s.io/pause:3.10   "/pause"                 53 minutes ago   Up 52 minutes             k8s_POD_kube-scheduler-minikube_kube-system_e039200acb850c82bb901653cc38ff6e_0
+0d0d149f8c0a   registry.k8s.io/pause:3.10   "/pause"                 53 minutes ago   Up 52 minutes             k8s_POD_kube-apiserver-minikube_kube-system_9e315b3a91fa9f6f7463439d9dac1a56_0
+df868b83e320   registry.k8s.io/pause:3.10   "/pause"                 53 minutes ago   Up 52 minutes             k8s_POD_etcd-minikube_kube-system_a5363f4f31e043bdae3c93aca4991903_0
+f64c0a3abc02   registry.k8s.io/pause:3.10   "/pause"                 53 minutes ago   Up 52 minutes             k8s_POD_kube-controller-manager-minikube_kube-system_40f5f661ab65f2e4bfe41ac2993c01de_0
+docker@minikube:~$
+docker@minikube:~$ #CTRL+D#
+logout
+PS C:\Users\u>
+PS C:\Users\u> m kubectl -- get pods   #this command execute minikube container inside the kubctl tool not available minikube for first time it will install #
+    > kubectl.exe.sha256:  64 B / 64 B [---------------------] 100.00% ? p/s 0s
+    > kubectl.exe:  55.20 MiB / 55.20 MiB [------] 100.00% 488.35 KiB p/s 1m56s
+No resources found in default namespace.
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> kubectl get pods  #Runn's in host kubctl #
+No resources found in default namespace.
+PS C:\Users\u>
+PS C:\Users\u> Set-Alias k kubectl
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> k config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: C:\Users\u\.minikube\ca.crt
+    extensions:
+    - extension:
+        last-update: Thu, 26 Sep 2024 13:15:17 EDT
+        provider: minikube.sigs.k8s.io
+        version: v1.34.0
+      name: cluster_info
+    server: https://127.0.0.1:51681                                      #Only one node which is my System Ip going to work we can any number of node #
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Thu, 26 Sep 2024 13:15:17 EDT
+        provider: minikube.sigs.k8s.io
+        version: v1.34.0
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: C:\Users\u\.minikube\profiles\minikube\client.crt
+    client-key: C:\Users\u\.minikube\profiles\minikube\client.key
+PS C:\Users\u>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
