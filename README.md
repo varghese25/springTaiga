@@ -1294,7 +1294,11 @@ varghese@DESKTOP-OODIU93:~$<br>
 <br>-------------------------------------------------------------------------------------<br>
 
 
-Date 26-09-2024 K8s (https://www.youtube.com/watch?v=7g5HLFg9QMI&list=PL5eh956CtlETZMJEMR866PCS2YNg_3O6d)
+Date 26-09-2024 K8s
+
+##Topic: Minikube with single Node(Ip System) cluster Created & Kubectl Config and with node wheather Its communicting or not checked.<br>
+
+(https://www.youtube.com/watch?v=7g5HLFg9QMI&list=PL5eh956CtlETZMJEMR866PCS2YNg_3O6d).<br>
 
 PS C:\Users\u> Set-Alias m minikube
 
