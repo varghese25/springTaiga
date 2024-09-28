@@ -1439,8 +1439,826 @@ users:
     client-key: C:\Users\u\.minikube\profiles\minikube\client.key
 PS C:\Users\u>
 
+<br>-------------------------------------------------------------------------------------------------<br>
 
 
+
+##Date 28-09-2024
+##Follow this first step 1 & Then go 2 #How To create Pod & Deploy in webBrowser# <br>
+
+#first step 1 Start driver Docker#
+
+PS C:\Users\u> m start --driver=docker
+* minikube v1.34.0 on Microsoft Windows 10 Pro 10.0.19045.4957 Build 19045.4957
+* Using the docker driver based on existing profile
+* Starting "minikube" primary control-plane node in "minikube" cluster
+* Pulling base image v0.0.45 ...
+* Updating the running docker "minikube" container ...
+! Failing to connect to https://registry.k8s.io/ from inside the minikube container
+* To pull new external images, you may need to configure a proxy: https://minikube.sigs.k8s.io/docs/reference/networking/proxy/
+* Preparing Kubernetes v1.31.0 on Docker 27.2.0 ...
+* Verifying Kubernetes components...
+  - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+* Enabled addons: storage-provisioner, default-storageclass
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>                                            
+PS C:\Users\u> k get nodes                         
+NAME       STATUS   ROLES           AGE   VERSION                        #Roles "Control-plane" Terminionlog changed by k8s before it was Roles "master"#
+minikube   Ready    control-plane   2d    v1.31.0
+
+
+#nodes in wide Format#
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> k get nodes -o wide
+NAME       STATUS   ROLES           AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION                       CONTAINER-RUNTIME
+minikube   Ready    control-plane   2d    v1.31.0   192.168.49.2   <none>        Ubuntu 22.04.4 LTS   5.15.153.1-microsoft-standard-WSL2   docker://27.2.0
+
+
+
+#nodes in Yaml Format#
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> k get nodes -o yaml
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Node
+  metadata:
+    annotations:
+      kubeadm.alpha.kubernetes.io/cri-socket: unix:///var/run/cri-dockerd.sock
+      node.alpha.kubernetes.io/ttl: "0"
+      volumes.kubernetes.io/controller-managed-attach-detach: "true"
+    creationTimestamp: "2024-09-26T17:14:17Z"
+    labels:
+      beta.kubernetes.io/arch: amd64
+      beta.kubernetes.io/os: linux
+      kubernetes.io/arch: amd64
+      kubernetes.io/hostname: minikube
+      kubernetes.io/os: linux
+      minikube.k8s.io/commit: 210b148df93a80eb872ecbeb7e35281b3c582c61
+      minikube.k8s.io/name: minikube
+      minikube.k8s.io/primary: "true"
+      minikube.k8s.io/updated_at: 2024_09_26T13_15_14_0700
+      minikube.k8s.io/version: v1.34.0
+      node-role.kubernetes.io/control-plane: ""
+      node.kubernetes.io/exclude-from-external-load-balancers: ""
+    name: minikube
+    resourceVersion: "6351"
+    uid: dd11d68b-43be-4b9a-88d1-dc506727abea
+  spec:
+    podCIDR: 10.244.0.0/24
+    podCIDRs:
+    - 10.244.0.0/24
+  status:
+    addresses:
+    - address: 192.168.49.2
+      type: InternalIP
+    - address: minikube
+      type: Hostname
+    allocatable:
+      cpu: "4"
+      ephemeral-storage: 1055762868Ki
+      hugepages-1Gi: "0"
+      hugepages-2Mi: "0"
+      memory: 3978116Ki
+      pods: "110"
+    capacity:
+      cpu: "4"
+      ephemeral-storage: 1055762868Ki
+      hugepages-1Gi: "0"
+      hugepages-2Mi: "0"
+      memory: 3978116Ki
+      pods: "110"
+    conditions:
+    - lastHeartbeatTime: "2024-09-28T17:33:20Z"
+      lastTransitionTime: "2024-09-26T17:14:17Z"
+      message: kubelet has sufficient memory available
+      reason: KubeletHasSufficientMemory
+      status: "False"
+      type: MemoryPressure
+    - lastHeartbeatTime: "2024-09-28T17:33:20Z"
+      lastTransitionTime: "2024-09-26T17:14:17Z"
+      message: kubelet has no disk pressure
+      reason: KubeletHasNoDiskPressure
+      status: "False"
+      type: DiskPressure
+    - lastHeartbeatTime: "2024-09-28T17:33:20Z"
+      lastTransitionTime: "2024-09-26T17:14:17Z"
+      message: kubelet has sufficient PID available
+      reason: KubeletHasSufficientPID
+      status: "False"
+      type: PIDPressure
+    - lastHeartbeatTime: "2024-09-28T17:33:20Z"
+      lastTransitionTime: "2024-09-26T17:14:18Z"
+      message: kubelet is posting ready status
+      reason: KubeletReady
+      status: "True"
+      type: Ready
+    daemonEndpoints:
+      kubeletEndpoint:
+        Port: 10250
+    images:
+    - names:
+      - registry.k8s.io/etcd@sha256:a6dc63e6e8cfa0307d7851762fa6b629afb18f28d8aa3fab5a6e91b4af60026a
+      - registry.k8s.io/etcd:3.5.15-0
+      sizeBytes: 147945345
+    - names:
+      - registry.k8s.io/kube-apiserver@sha256:470179274deb9dc3a81df55cfc24823ce153147d4ebf2ed649a4f271f51eaddf
+      - registry.k8s.io/kube-apiserver:v1.31.0
+      sizeBytes: 94175876
+    - names:
+      - registry.k8s.io/kube-proxy@sha256:c727efb1c6f15a68060bf7f207f5c7a765355b7e3340c513e582ec819c5cd2fe
+      - registry.k8s.io/kube-proxy:v1.31.0
+      sizeBytes: 91471299
+    - names:
+      - registry.k8s.io/kube-controller-manager@sha256:f6f3c33dda209e8434b83dacf5244c03b59b0018d93325ff21296a142b68497d
+      - registry.k8s.io/kube-controller-manager:v1.31.0
+      sizeBytes: 88380387
+    - names:
+      - registry.k8s.io/kube-scheduler@sha256:96ddae9c9b2e79342e0551e2d2ec422c0c02629a74d928924aaa069706619808
+      - registry.k8s.io/kube-scheduler:v1.31.0
+      sizeBytes: 67363811
+    - names:
+      - registry.k8s.io/coredns/coredns@sha256:1eeb4c7316bacb1d4c8ead65571cd92dd21e27359f0d4917f1a5822a73b75db1
+      - registry.k8s.io/coredns/coredns:v1.11.1
+      sizeBytes: 59820619
+    - names:
+      - gcr.io/k8s-minikube/storage-provisioner@sha256:18eb69d1418e854ad5a19e399310e52808a8321e4c441c1dddad8977a0d7a944
+      - gcr.io/k8s-minikube/storage-provisioner:v5
+      sizeBytes: 31465472
+    - names:
+      - registry.k8s.io/pause@sha256:ee6521f290b2168b6e0935a181d4cff9be1ac3f505666ef0e3c98fae8199917a
+      - registry.k8s.io/pause:3.10
+      sizeBytes: 735760
+    nodeInfo:
+      architecture: amd64
+      bootID: 9dffcac1-96ea-4361-bdf7-cfc5a1fc1e08
+      containerRuntimeVersion: docker://27.2.0
+      kernelVersion: 5.15.153.1-microsoft-standard-WSL2
+      kubeProxyVersion: ""
+      kubeletVersion: v1.31.0
+      machineID: e5854f5e7e614bd7bda57f7ae2708452
+      operatingSystem: linux
+      osImage: Ubuntu 22.04.4 LTS
+      systemUUID: e5854f5e7e614bd7bda57f7ae2708452
+kind: List
+metadata:
+  resourceVersion: ""
+  
+  
+  
+#nodes in Json Format#
+
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+  
+  PS C:\Users\u> k get nodes -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Node",
+            "metadata": {
+                "annotations": {
+                    "kubeadm.alpha.kubernetes.io/cri-socket": "unix:///var/run/cri-dockerd.sock",
+                    "node.alpha.kubernetes.io/ttl": "0",
+                    "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+                },
+                "creationTimestamp": "2024-09-26T17:14:17Z",
+                "labels": {
+                    "beta.kubernetes.io/arch": "amd64",
+                    "beta.kubernetes.io/os": "linux",
+                    "kubernetes.io/arch": "amd64",
+                    "kubernetes.io/hostname": "minikube",
+                    "kubernetes.io/os": "linux",
+                    "minikube.k8s.io/commit": "210b148df93a80eb872ecbeb7e35281b3c582c61",
+                    "minikube.k8s.io/name": "minikube",
+                    "minikube.k8s.io/primary": "true",
+                    "minikube.k8s.io/updated_at": "2024_09_26T13_15_14_0700",
+                    "minikube.k8s.io/version": "v1.34.0",
+                    "node-role.kubernetes.io/control-plane": "",
+                    "node.kubernetes.io/exclude-from-external-load-balancers": ""
+                },
+                "name": "minikube",
+                "resourceVersion": "6351",
+                "uid": "dd11d68b-43be-4b9a-88d1-dc506727abea"
+            },
+            "spec": {
+                "podCIDR": "10.244.0.0/24",
+                "podCIDRs": [
+                    "10.244.0.0/24"
+                ]
+            },
+            "status": {
+                "addresses": [
+                    {
+                        "address": "192.168.49.2",
+                        "type": "InternalIP"
+                    },
+                    {
+                        "address": "minikube",
+                        "type": "Hostname"
+                    }
+                ],
+                "allocatable": {
+                    "cpu": "4",
+                    "ephemeral-storage": "1055762868Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "3978116Ki",
+                    "pods": "110"
+                },
+                "capacity": {
+                    "cpu": "4",
+                    "ephemeral-storage": "1055762868Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "3978116Ki",
+                    "pods": "110"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2024-09-28T17:33:20Z",
+                        "lastTransitionTime": "2024-09-26T17:14:17Z",
+                        "message": "kubelet has sufficient memory available",
+                        "reason": "KubeletHasSufficientMemory",
+                        "status": "False",
+                        "type": "MemoryPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2024-09-28T17:33:20Z",
+                        "lastTransitionTime": "2024-09-26T17:14:17Z",
+                        "message": "kubelet has no disk pressure",
+                        "reason": "KubeletHasNoDiskPressure",
+                        "status": "False",
+                        "type": "DiskPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2024-09-28T17:33:20Z",
+                        "lastTransitionTime": "2024-09-26T17:14:17Z",
+                        "message": "kubelet has sufficient PID available",
+                        "reason": "KubeletHasSufficientPID",
+                        "status": "False",
+                        "type": "PIDPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2024-09-28T17:33:20Z",
+                        "lastTransitionTime": "2024-09-26T17:14:18Z",
+                        "message": "kubelet is posting ready status",
+                        "reason": "KubeletReady",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "daemonEndpoints": {
+                    "kubeletEndpoint": {
+                        "Port": 10250
+                    }
+                },
+                "images": [
+                    {
+                        "names": [
+                            "registry.k8s.io/etcd@sha256:a6dc63e6e8cfa0307d7851762fa6b629afb18f28d8aa3fab5a6e91b4af60026a",
+                            "registry.k8s.io/etcd:3.5.15-0"
+                        ],
+                        "sizeBytes": 147945345
+                    },
+                    {
+                        "names": [
+                            "registry.k8s.io/kube-apiserver@sha256:470179274deb9dc3a81df55cfc24823ce153147d4ebf2ed649a4f271f51eaddf",
+                            "registry.k8s.io/kube-apiserver:v1.31.0"
+                        ],
+                        "sizeBytes": 94175876
+                    },
+                    {
+                        "names": [
+                            "registry.k8s.io/kube-proxy@sha256:c727efb1c6f15a68060bf7f207f5c7a765355b7e3340c513e582ec819c5cd2fe",
+                            "registry.k8s.io/kube-proxy:v1.31.0"
+                        ],
+                        "sizeBytes": 91471299
+                    },
+                    {
+                        "names": [
+                            "registry.k8s.io/kube-controller-manager@sha256:f6f3c33dda209e8434b83dacf5244c03b59b0018d93325ff21296a142b68497d",
+                            "registry.k8s.io/kube-controller-manager:v1.31.0"
+                        ],
+                        "sizeBytes": 88380387
+                    },
+                    {
+                        "names": [
+                            "registry.k8s.io/kube-scheduler@sha256:96ddae9c9b2e79342e0551e2d2ec422c0c02629a74d928924aaa069706619808",
+                            "registry.k8s.io/kube-scheduler:v1.31.0"
+                        ],
+                        "sizeBytes": 67363811
+                    },
+                    {
+                        "names": [
+                            "registry.k8s.io/coredns/coredns@sha256:1eeb4c7316bacb1d4c8ead65571cd92dd21e27359f0d4917f1a5822a73b75db1",
+                            "registry.k8s.io/coredns/coredns:v1.11.1"
+                        ],
+                        "sizeBytes": 59820619
+                    },
+                    {
+                        "names": [
+                            "gcr.io/k8s-minikube/storage-provisioner@sha256:18eb69d1418e854ad5a19e399310e52808a8321e4c441c1dddad8977a0d7a944",
+                            "gcr.io/k8s-minikube/storage-provisioner:v5"
+                        ],
+                        "sizeBytes": 31465472
+                    },
+                    {
+                        "names": [
+                            "registry.k8s.io/pause@sha256:ee6521f290b2168b6e0935a181d4cff9be1ac3f505666ef0e3c98fae8199917a",
+                            "registry.k8s.io/pause:3.10"
+                        ],
+                        "sizeBytes": 735760
+                    }
+                ],
+                "nodeInfo": {
+                    "architecture": "amd64",
+                    "bootID": "9dffcac1-96ea-4361-bdf7-cfc5a1fc1e08",
+                    "containerRuntimeVersion": "docker://27.2.0",
+                    "kernelVersion": "5.15.153.1-microsoft-standard-WSL2",
+                    "kubeProxyVersion": "",
+                    "kubeletVersion": "v1.31.0",
+                    "machineID": "e5854f5e7e614bd7bda57f7ae2708452",
+                    "operatingSystem": "linux",
+                    "osImage": "Ubuntu 22.04.4 LTS",
+                    "systemUUID": "e5854f5e7e614bd7bda57f7ae2708452"
+                }
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> k get pods
+No resources found in default namespace.
+PS C:\Users\u> k get deploy
+No resources found in default namespace.
+PS C:\Users\u> k get svc
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2d
+PS C:\Users\u>
+
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> m ssh
+docker@minikube:~$ docker ps
+CONTAINER ID   IMAGE                        COMMAND                  CREATED          STATUS          PORTS     NAMES
+1d92f31aeba0   6e38f40d628d                 "/storage-provisioner"   14 minutes ago   Up 14 minutes             k8s_storage-provisioner_storage-provisioner_kube-system_c0616760-dc06-4863-b269-b6d222d729ca_2
+f6b8bb57e8f5   cbb01a7bd410                 "/coredns -conf /etc…"   15 minutes ago   Up 15 minutes             k8s_coredns_coredns-6f6b679f8f-h49rl_kube-system_ab450272-2c88-47b8-a0ea-4d801893e276_1
+3268ea340764   ad83b2ca7b09                 "/usr/local/bin/kube…"   15 minutes ago   Up 15 minutes             k8s_kube-proxy_kube-proxy-t5sx7_kube-system_36148bed-87f6-4308-9c3d-4a29790cea65_1
+docker@minikube:~$
+docker@minikube:~$
+docker@minikube:~$
+docker@minikube:~$
+docker@minikube:~$exit
+
+
+
+#Default Containers#
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> k get pod --namespace kube-system
+NAME                               READY   STATUS    RESTARTS      AGE                     Tip
+coredns-6f6b679f8f-h49rl           1/1     Running   1 (49m ago)   2d           #K8s internall created object has a prefix Deployment name"coredns"  and suffix"6f6b679f8f" id #
+etcd-minikube                      1/1     Running   1 (49m ago)   2d                      #Dircet Pod name Given #
+kube-apiserver-minikube            1/1     Running   1 (49m ago)   2d
+kube-controller-manager-minikube   1/1     Running   3 (49m ago)   2d
+kube-proxy-t5sx7                   1/1     Running   1 (46h ago)   2d
+kube-scheduler-minikube            1/1     Running   1 (49m ago)   2d
+storage-provisioner                1/1     Running   2 (19m ago)   2d
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> 
+
+#k8s Created Deployment "Coredns" running in one replica coredns-6f6b679f8f-h49rl #
+PS C:\Users\u> k get deploy --namespace kube-system
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+coredns   1/1     1            1           2d
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+#k8s above deployment created one replica Set #
+PS C:\Users\u> k get replicaset --namespace kube-system
+NAME                 DESIRED   CURRENT   READY   AGE
+coredns-6f6b679f8f   1         1         1       2d
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+
+
+#Object information use describe nodes#
+
+PS C:\Users\u> k describe nodes
+Name:               minikube
+Roles:              control-plane
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=minikube
+                    kubernetes.io/os=linux
+                    minikube.k8s.io/commit=210b148df93a80eb872ecbeb7e35281b3c582c61
+                    minikube.k8s.io/name=minikube
+                    minikube.k8s.io/primary=true
+                    minikube.k8s.io/updated_at=2024_09_26T13_15_14_0700
+                    minikube.k8s.io/version=v1.34.0
+                    node-role.kubernetes.io/control-plane=
+                    node.kubernetes.io/exclude-from-external-load-balancers=
+Annotations:        kubeadm.alpha.kubernetes.io/cri-socket: unix:///var/run/cri-dockerd.sock
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Thu, 26 Sep 2024 13:14:17 -0400
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  minikube
+  AcquireTime:     <unset>
+  RenewTime:       Sat, 28 Sep 2024 13:57:46 -0400
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Sat, 28 Sep 2024 13:53:44 -0400   Thu, 26 Sep 2024 13:14:17 -0400   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Sat, 28 Sep 2024 13:53:44 -0400   Thu, 26 Sep 2024 13:14:17 -0400   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Sat, 28 Sep 2024 13:53:44 -0400   Thu, 26 Sep 2024 13:14:17 -0400   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Sat, 28 Sep 2024 13:53:44 -0400   Thu, 26 Sep 2024 13:14:18 -0400   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  192.168.49.2
+  Hostname:    minikube
+Capacity:
+  cpu:                4
+  ephemeral-storage:  1055762868Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3978116Ki
+  pods:               110
+Allocatable:
+  cpu:                4
+  ephemeral-storage:  1055762868Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3978116Ki
+  pods:               110
+System Info:
+  Machine ID:                 e5854f5e7e614bd7bda57f7ae2708452
+  System UUID:                e5854f5e7e614bd7bda57f7ae2708452
+  Boot ID:                    9dffcac1-96ea-4361-bdf7-cfc5a1fc1e08
+  Kernel Version:             5.15.153.1-microsoft-standard-WSL2
+  OS Image:                   Ubuntu 22.04.4 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  docker://27.2.0
+  Kubelet Version:            v1.31.0
+  Kube-Proxy Version:
+PodCIDR:                      10.244.0.0/24
+PodCIDRs:                     10.244.0.0/24
+Non-terminated Pods:          (7 in total)
+  Namespace                   Name                                CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                ------------  ----------  ---------------  -------------  ---
+  kube-system                 coredns-6f6b679f8f-h49rl            100m (2%)     0 (0%)      70Mi (1%)        170Mi (4%)     2d
+  kube-system                 etcd-minikube                       100m (2%)     0 (0%)      100Mi (2%)       0 (0%)         2d
+  kube-system                 kube-apiserver-minikube             250m (6%)     0 (0%)      0 (0%)           0 (0%)         2d
+  kube-system                 kube-controller-manager-minikube    200m (5%)     0 (0%)      0 (0%)           0 (0%)         2d
+  kube-system                 kube-proxy-t5sx7                    0 (0%)        0 (0%)      0 (0%)           0 (0%)         2d
+  kube-system                 kube-scheduler-minikube             100m (2%)     0 (0%)      0 (0%)           0 (0%)         2d
+  kube-system                 storage-provisioner                 0 (0%)        0 (0%)      0 (0%)           0 (0%)         2d
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests    Limits
+  --------           --------    ------
+  cpu                750m (18%)  0 (0%)
+  memory             170Mi (4%)  170Mi (4%)
+  ephemeral-storage  0 (0%)      0 (0%)
+  hugepages-1Gi      0 (0%)      0 (0%)
+  hugepages-2Mi      0 (0%)      0 (0%)
+Events:
+  Type     Reason                             Age                From             Message
+  ----     ------                             ----               ----             -------
+  Normal   Starting                           33m                kube-proxy
+  Warning  PossibleMemoryBackedVolumesOnDisk  35m                kubelet          The tmpfs noswap option is not supported. Memory-backed volumes (e.g. secrets, emptyDirs, etc.) might be swapped to disk and should no longer be considered secure.
+  Normal   Starting                           35m                kubelet          Starting kubelet.
+  Warning  CgroupV1                           35m                kubelet          Cgroup v1 support is in maintenance mode, please migrate to Cgroup v2.
+  Normal   NodeHasSufficientMemory            35m (x7 over 35m)  kubelet          Node minikube status is now: NodeHasSufficientMemory
+  Normal   NodeHasNoDiskPressure              35m (x7 over 35m)  kubelet          Node minikube status is now: NodeHasNoDiskPressure
+  Normal   NodeHasSufficientPID               35m (x7 over 35m)  kubelet          Node minikube status is now: NodeHasSufficientPID
+  Normal   NodeAllocatableEnforced            35m                kubelet          Updated Node Allocatable limit across pods
+  Normal   RegisteredNode                     34m                node-controller  Node minikube event: Registered Node minikube in Controller
+PS C:\Users\u>
+
+
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+
+--------------------------------#How To create Pod#---------------------------------------------------------------------
+
+
+
+
+PS C:\Users\u> k run npod --image=nginx:latest
+pod/npod created
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+#Deleted nPod deploy deleted#
+PS C:\Users\u> kubectl delete pod npod
+pod "npod" deleted
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+#k8s how to create pod name is www image name is nginx port used is 80#
+
+PS C:\Users\u> k run www --image=nginx --port=80
+pod/www created
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+
+#Pod Created in the name of www#
+
+PS C:\Users\u> k get pods
+NAME   READY   STATUS    RESTARTS   AGE
+www    1/1     Running   0          77s
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+#no deployments seen pervious we deleted npod deployement refer above#
+PS C:\Users\u> k get deploy
+No resources found in default namespace.
+PS C:\Users\u>
+
+
+#Using LoadBalance How to expose www pod from cluster to out side meaning external Broswe#
+*ext - external
+
+PS C:\Users\u> k expose pod www --port=80 --name=www-ext --type=LoadBalancer
+service/www-ext exposed
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+#service Command, Minikube working as container, as a cluster external-Ip doesnt have ip address to access#
+
+PS C:\Users\u> k get svc
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP      10.96.0.1        <none>        443/TCP        2d1h
+www-ext      LoadBalancer   10.107.116.195   <pending>     80:30922/TCP   116s
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+
+#External ip willexpose with this command minikube conatiner which has www pod can extrally viewed in browser #
+
+
+PS C:\Users\u> m service www-ext
+|-----------|---------|-------------|---------------------------|
+| NAMESPACE |  NAME   | TARGET PORT |            URL            |
+|-----------|---------|-------------|---------------------------|
+| default   | www-ext |          80 | http://192.168.49.2:30922 |
+|-----------|---------|-------------|---------------------------|
+* Starting tunnel for service www-ext.
+|-----------|---------|-------------|------------------------|
+| NAMESPACE |  NAME   | TARGET PORT |          URL           |
+|-----------|---------|-------------|------------------------|
+| default   | www-ext |             | http://127.0.0.1:62306 |
+|-----------|---------|-------------|------------------------|
+* Opening service default/www-ext in default browser...
+! Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+
+#CTRL + C#
+* Stopped tunnel for service www-ext. 
+
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> m service www-ext --url
+
+http://127.0.0.1:62420 #Open this ip in browser#
+
+! Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+
+--------------How Create  Deployment same image nginx----------------------------
+* wd = web deployment
+
+
+PS C:\Users\u> k create deploy wd --image=nginx
+deployment.apps/wd created
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> k get deploy
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+wd     0/1     1            0           12s
+
+#Sucessfully Created#
+
+PS C:\Users\u> k get deploy
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+wd     1/1     1            1           68s
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+#Two Pod running www & wd in minikube#
+
+PS C:\Users\u> k get pods
+NAME                  READY   STATUS    RESTARTS   AGE
+wd-6595c9877d-4qgzr   1/1     Running   0          2m37s
+www                   1/1     Running   0          30m
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+#decelarativ method such as yaml file file path: C:\Users\u\deploy.yaml#
+
+PS C:\Users\u> k apply -f deloy.yaml
+Warning: resource deployments/wd is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+deployment.apps/wd configured
+
+
+# We can see three Replicas #
+PS C:\Users\u> k get deploy
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+wd     3/3     3            3           34m
+PS C:\Users\u>
+
+# We can see three Replicas#
+
+PS C:\Users\u> k get replicaset
+NAME            DESIRED   CURRENT   READY   AGE
+wd-864758c6     3         3         3       7m26s
+
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+#and three Pods #
+PS C:\Users\u> k get pods
+NAME                READY   STATUS    RESTARTS   AGE
+wd-864758c6-fs446   1/1     Running   0          7m59s
+wd-864758c6-qsmdg   1/1     Running   0          7m45s
+wd-864758c6-whbts   1/1     Running   0          8m35s
+www                 1/1     Running   0          65m
+PS C:\Users\u>
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+
+
+#Delete any pods #
+
+
+PS C:\Users\u> k delete pod wd-864758c6-fs446
+pod "wd-864758c6-fs446" deleted
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+
+
+#k8s detected one down immedately it created another pod#
+
+PS C:\Users\u> k get pods
+NAME                READY   STATUS    RESTARTS   AGE
+wd-864758c6-nhtbz   1/1     Running   0          2m8s   # New Pod k8s created after delete or down#
+wd-864758c6-qsmdg   1/1     Running   0          15m
+wd-864758c6-whbts   1/1     Running   0          16m
+www                 1/1     Running   0          73m
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+
+
+#Similar to logs what all pods deleted created etc info can seen in the events #
+PS C:\Users\u> k get events
+
+LAST SEEN   TYPE     REASON              OBJECT                     MESSAGE
+47m         Normal   Scheduled           pod/wd-6595c9877d-4qgzr    Successfully assigned default/wd-6595c9877d-4qgzr to minikube
+47m         Normal   Pulling             pod/wd-6595c9877d-4qgzr    Pulling image "nginx"
+47m         Normal   Pulled              pod/wd-6595c9877d-4qgzr    Successfully pulled image "nginx" in 1.503s (1.503s including waiting). Image size: 187706909 bytes.
+
+
+
+PS C:\Users\u> m addons
+addons modifies minikube addons files using subcommands like "minikube addons enable dashboard"
+
+
+
+# minikube dashboard in powershell if it loading ctr+D it automatically it will take us to dashboard browser with ip#
+
+PS C:\Users\u> m dashboard
+* Enabling dashboard ...
+  - Using image docker.io/kubernetesui/dashboard:v2.7.0
+  - Using image docker.io/kubernetesui/metrics-scraper:v1.0.8
+* Some dashboard features require the metrics-server addon. To enable all features please run:
+
+        minikube addons enable metrics-server
+
+* Verifying dashboard health ...
+* Launching proxy ...
+* Verifying proxy health ...
+* Opening http://127.0.0.1:62912/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ in your default browser...
+
+
+
+
+##NOTES:
+Kubernetes (K8s)
+ kubectl (client) #Master server which talk to k8s Api response shows as output similiar to docker tools running docker machine showed us docker out same kubectl#
+ minikube (single-node cluster)
+ kubeadm    
+ node -> computer machine or virtural machine
+
+
+  
+  ##pod <- container (Example for pod Vegetable peas skin called pod & peas are container) <-ReplicaSet <-  Deployment (Example, will create replicate set, every time we can't create 5 or more replicae set if it in deployment config )
+DaemonSet  -> create copy of container in every nod means working virtual machine
+NameSpace - Particular set object we can seperate 
+Services - Like how we expose ip and view in broswer (Don't required pod to pod communication this service not required)
+ 
+ 
+ Command for  K8s
+ Imperative -> (Run, Expose, Create, Delete, Scale,....) dircetly we can use this manual process
+ Declarative Type (Yamel file here we config all steps pods delete etc) -> (apply, diff..)
+
+
+
+
+
+
+
+
+
+<br>---------------------------------##Date 28-09-2024 End---------------------------------<br>
 
 
 
