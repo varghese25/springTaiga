@@ -2348,6 +2348,19 @@ No resources found in default namespace.
 PS C:\Users\u>
 
 
+##Component Health Status
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> kubectl get componentstatuses
+Warning: v1 ComponentStatus is deprecated in v1.19+
+NAME                 STATUS    MESSAGE   ERROR
+controller-manager   Healthy   ok
+scheduler            Healthy   ok
+etcd-0               Healthy   ok
+PS C:\Users\u>
+
+
+
 <br>--------------------##END---------------------------<br>
 
 
