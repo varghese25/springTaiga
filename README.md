@@ -2263,6 +2263,94 @@ Services - Like how we expose ip and view in broswer (Don't required pod to pod 
 
 
 
+<br>--------------------------------##Date 02-10-2024 Start---------------------------------<br>
+
+
+#How Delete Pod/Deployment/ReplicaSet# & Follow Above #How To create Pod#<br>
+#####First get the  pods#####<br>
+
+
+PS C:\Users\u> kubectl get pods
+NAME                READY   STATUS    RESTARTS      AGE<br>
+wd-864758c6-27lh5   1/1     Running   0             39s <br>
+wd-864758c6-d4ghd   1/1     Running   0             40s<br>
+wd-864758c6-wtlb2   1/1     Running   0             37s<br>
+www                 1/1     Running   2 (23m ago)   3d21h<br>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+
+####Second go for Normal delete or if  doesn't work go for Forcefully Delete Pods####<br>
+
+PS C:\Users\u> kubectl delete pod wd-864758c6-27lh5 wd-864758c6-d4ghd wd-864758c6-wtlb2 --grace-period=0 --force  
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+pod "wd-864758c6-27lh5" force deleted
+pod "wd-864758c6-d4ghd" force deleted
+pod "wd-864758c6-wtlb2" force deleted
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+####Third check wd pod deleted or not with below command####
+PS C:\Users\u> kubectl get pods 
+NAME   READY   STATUS    RESTARTS      AGE
+www    1/1     Running   2 (90m ago)   3d22h
+
+
+####Fourth delete the (wd web devlopment container) deployment (it should say no resourse found namespace)#### Note Before deleting ensure which deployment(like wd in my case) should be deleted
+
+PS C:\Users\u> kubectl delete deployment wd --grace-period=0 --force
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+deployment.apps "wd" force deleted
+
+PS C:\Users\u> kubectl get deploy
+No resources found in default namespace.
+PS C:\Users\u>
+
+
+
+
+####Fivth check the Replicaset & delete####Note Before deleting ensure which Replicaset(like wd in my case) should be deleted
+
+PS C:\Users\u>
+PS C:\Users\u> kubectl delete replicaset --all
+No resources found
+PS C:\Users\u>
+PS C:\Users\u>
+
+PS C:\Users\u> kubectl get replicaset
+No resources found in default namespace.
+PS C:\Users\u>
+
+
+
+####Finally its sucessfully deleted pod/deployment/replicaset####
+
+PS C:\Users\u> kubectl get pods
+NAME   READY   STATUS    RESTARTS       AGE
+www    1/1     Running   2 (106m ago)   3d23h
+PS C:\Users\u> kubectl get deploy
+No resources found in default namespace.
+PS C:\Users\u> kubectl get replicaset
+No resources found in default namespace.
+PS C:\Users\u>
+
+
+<br>--------------------##END---------------------------<br>
+
+
 
 
 
