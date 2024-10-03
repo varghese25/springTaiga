@@ -2363,7 +2363,141 @@ PS C:\Users\u>
 
 <br>--------------------##END---------------------------<br>
 
+## Date : 03-10-2024
 
+
+## Ingress Steps using without Cloud accessing pods
+
+#Increase the Docker CPU and Memory#
+
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> minikube start --cpus=4 --memory=3884 <br> this memory based docker<br>
+
+
+#Enable ingress#
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> minikube addons enable ingress
+* Verifying ingress addon...
+* The 'ingress' addon is enabled
+
+##Error occurs Appears with this command Delete and Reinstall ## 
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/baremetal/deploy.yaml
+
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>kubectl delete job ingress-nginx-admission-create -n ingress-nginx
+PS C:\Users\u>kubectl delete job ingress-nginx-admission-patch -n ingress-nginx
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/baremetal/deploy.yaml
+
+
+#Ensure that the ingress-nginx pods are in a Running state.#
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> kubectl get pods -n ingress-nginx
+NAME                                        READY   STATUS      RESTARTS   AGE
+ingress-nginx-admission-create-7qnsk        0/1     Completed   0          7m6s
+ingress-nginx-admission-patch-v8pxj         0/1     Completed   0          7m6s
+ingress-nginx-controller-6484d48959-fln6x   1/1     Running     0          10m
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+
+#Check label to Config label Name is wd in serviceport.yaml#
+PS C:\Users\u> k get pods --show-labels
+NAME                READY   STATUS    RESTARTS      AGE     LABELS
+wd-864758c6-9w2vg   1/1     Running   3 (33m ago)   23h     app=wd,pod-template-hash=864758c6
+wd-864758c6-cj46q   1/1     Running   2 (47m ago)   23h     app=wd,pod-template-hash=864758c6
+wd-864758c6-hk5wc   1/1     Running   3 (33m ago)   23h     app=wd,pod-template-hash=864758c6
+wd-864758c6-vs88z   1/1     Running   3 (33m ago)   23h     app=wd,pod-template-hash=864758c6
+wd-864758c6-zzt2f   1/1     Running   3             23h     app=wd,pod-template-hash=864758c6
+
+#Created serviceport yamil flie with port Applyed:# #
+PS C:\Users\u> kubectl apply -f serviceport.yaml
+service/my-service configured
+PS C:\Users\u> kubectl get svc
+NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)           AGE
+my-service              NodePort       10.109.105.45    <none>        80:30007/TCP      15m
+
+
+PS C:\Users\u> bat serviceport.yaml
+
+
+##Now, you can create an Ingress resource to expose the service through HTTP/HTTPS. create an ingress.yaml file:#
+
+ C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> bat ingress.yaml #View yamil file#
+PS C:\Users\u>
+
+#Apply the service:#
+PS C:\Users\u> kubectl apply -f ingress.yaml
+ingress.networking.k8s.io/my-ingress created
+PS C:\Users\u>
+
+
+
+ ##Access Your Application##
+ 
+  Access Your Application
+  On Windows, you can modify the hosts file located at C:\Windows\System32\drivers\etc\hosts.
+  
+  Open Notepad as Administrator:
+
+Click on the Start menu and type Notepad.
+Right-click on Notepad and select Run as administrator. This is necessary because the hosts file requires elevated permissions to be edited.
+Open the Hosts File:
+
+In Notepad, go to File > Open.
+Navigate to C:\Windows\System32\drivers\etc.
+In the bottom-right corner of the Open dialog, change the file type from Text Documents to All Files. This will allow you to see the hosts file.
+Select the hosts file and click Open.
+Add the Entry:
+
+Scroll to the bottom of the file (or find a suitable place) and add the following line:
+lua
+Copy code
+127.0.0.1 myapp.local
+Make sure there are no extra spaces or tabs before or after the entry.
+Save the File:
+
+Go to File > Save to save the changes, then close Notepad.
+
+
+
+
+##Ping the Hostname:##
+
+In the Command Prompt, type:
+bash
+Copy code
+ping myapp.local
+
+
+
+##Use Minikube Tunnel###
+If you're still facing issues, you can use minikube tunnel to expose the service:
+
+Open a new terminal window.
+
+PS C:\Users\u> minikube tunnel
+* Tunnel successfully started
+
+
+
+Using Webrowser we can see the out put
+http://myapp.local/
 
 
 
