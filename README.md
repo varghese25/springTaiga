@@ -2495,14 +2495,71 @@ PS C:\Users\u> minikube tunnel
 * Tunnel successfully started
 
 
-
 Using Webrowser we can see the out put
 http://myapp.local/
 
 
+<br>--------------------##END---------------------------<br>
+
+
+##Date 04-10-2024
+
+##Helm: K8s Packaging Manager<br>
+##WithOut Helm
+Team rely Yamel files configure K8s WorkLoad
+Yaml flies which we creating for k8s are static they don't receive parameters dynamically..
+
+Consistency is the major issue with hand crafted Yaml or deployments
+
+Version history not maintained in Yaml & K8s..
+
+HElM: K8s Packing Manager
+
+Running atop K8s
+Micro Serivces Management on Ks
+
+Packaging Manager Eg: Windows Installer , Ubutu (apt) etc
+
+
+Helm work as package manager k8s..It can upgrade, downgrade, install ,uninstall enumber operation can be done
+
+Benfits
+Greatly improve productivity usiing single click deployment.
+easier roll back of version
+
+
+Helm Chart 
+Helm uses a packaging format called charts
+Collection of files that describe a related set of k8s resourse
+
+
+Installation
+k8s env must be pre-configured for Helm
+
+-> Local Installion
+-> Cloud Installation using Minikube(Single Machine will be Sufficent)
+-> Clound Installation using K8s HA(High Avaliable) Env (2/3 Machine wil be require Maskter & worker node)
+-> K8s Managed Service SetUp
+-> 
 
 
 
+Helm path setup to open in Wsl/ Poweshell / Cmd
+
+C:\Windows\System32\helm
+
+##This is code saved with helm.bat##
+ 
+@echo off
+wsl helm %*
+
+
+
+
+
+
+
+<br>--------------------##END---------------------------<br>
 
 
 
