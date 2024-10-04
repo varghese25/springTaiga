@@ -2546,7 +2546,7 @@ k8s env must be pre-configured for Helm
 
 Helm path setup to open in Wsl/ Poweshell / Cmd
 
-C:\Windows\System32\helm
+C:\Windows\System32\helm  #Note Pad must opened in Administator mode and save in mentioned path#
 
 ##This is code saved with helm.bat##
  
