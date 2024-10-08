@@ -2561,6 +2561,14 @@ wsl helm %*
 
 <br>--------------------##END---------------------------<br>
 
+## Date 08-10-2024
+##Helm Chart
+ helm repo list<br>
+ helm repo add bitnami https://charts.bitnami.com/bitnami<br>
+ helm repo list <br>
+ helm repo remove bitnami<br>
+ <br>
+ Helm Search Commands <br>
 
 
 
