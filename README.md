@@ -2569,8 +2569,84 @@ wsl helm %*
  helm repo remove bitnami<br>
  <br>
  Helm Search Commands <br>
+<br>--------------------##END---------------------------<br>
 
 
+## Date 12-10-2024
+
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> helm repo list
+NAME    URL
+bitnami https://charts.bitnami.com/bitnami
+brigade https://brigadecore.github.io/charts
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> helm repo remove brigade
+"brigade" has been removed from your repositories
+PS C:\Users\u>
+PS C:\Users\u> helm search repo mysql
+NAME                    CHART VERSION   APP VERSION     DESCRIPTION
+bitnami/mysql           11.1.17         8.4.2           MySQL is a fast, reliable, scalable, and easy t...
+bitnami/phpmyadmin      17.0.7          5.2.1           phpMyAdmin is a free software tool written in P...
+bitnami/mariadb         19.1.0          11.4.3          MariaDB is an open source, community-developed ...
+bitnami/mariadb-galera  14.0.10         11.4.3          MariaDB Galera is a multi-primary database clus...
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> helm repo add brigade https://brigadecore.github.io/charts
+"brigade" has been added to your repositories
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> helm repo list
+PS C:\Users\u>
+PS C:\Users\u> /charts.bitnami.com/bitnami
+PS C:\Users\u> /brigadecore.github.io/charts
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> helm search repo nginx   ##
+NAME                                    CHART VERSION   APP VERSION     DESCRIPTION           
+bitnami/nginx                           18.2.2          1.27.2          NGINX Open Source is a web server that can be a...
+bitnami/nginx-ingress-controller        11.4.4          1.11.3          NGINX Ingress Controller is an Ingress controll...
+bitnami/nginx-intel                     2.1.15          0.4.9           DEPRECATED NGINX Open Source for Intel is a lig...
+PS C:\Users\u>
+PS C:\Users\u> helm search hub nginx   # Searching artifact of Helm so we are getting this much result multiple register in hub#
+URL                                                     CHART VERSION   APP VERSION                             DESCRIPTION
+https://artifacthub.io/packages/helm/krakazyabr...      1.0.0           1.19.0                                  Nginx Helm chart for Kubernetes
+https://artifacthub.io/packages/helm/bitnami/nginx      18.2.2          1.27.2                                  NGINX Open Source is a web server that can be a...
+https://artifacthub.io/packages/helm/dysnix/nginx       7.1.8           1.19.4                                  Chart for the nginx server
+https://artifacthub.io/packages/helm/bitnami-ak...      13.2.12         1.23.2                                  NGINX Open Source is a web server that can be a...
+https://artifacthub.io/packages/helm/ashu-nginx...      0.1.0           1.16.0                                  A Helm chart for Kubernetes
+https://artifacthub.io/packages/helm/test-nginx...      0.1.0           1.16.0                                  A Helm chart for Kubernetes
+https://artifacthub.io/packages/helm/shubhamtat...      0.1.12          1.19.6                                  Nginx Helm chart for Kubernetes
+https://artifacthub.io/packages/helm/dhinesh/nginx      18.2.2          1.27.2                                  NGINX Open Source is a web server that can be a...
+https://artifacthub.io/packages/helm/wiremind/n...      2.1.1                                                   An NGINX HTTP server
+https://artifacthub.io/packages/helm/zrepo-test...      5.1.5           1.16.1                                  Chart for the nginx server
+https://artifacthub.io/packages/helm/cloudnativ...      3.2.0           1.16.0                                  Chart for the nginx server
+https://artifacthub.io/packages/helm/jfrog/nginx        15.1.5          1.25.2                                  NGINX Open Source is a web server that can be a...
+https://artifacthub.io/packages/helm/slamdev/nginx      0.0.21          1.19.10                                 Helm chart to deploy [nginx](https://www.nginx....
+
+PS C:\Users\u> helm search hub nginx | Measure-Object -Line  #Poweshell Cmd total 193 registery avilable  for nginx chart available#
+
+Lines Words Characters Property
+----- ----- ---------- --------
+  193
+
+
+PS C:\Users\u>
+PS C:\Users\u> helm search hub mysql | Measure-Object -Line
+
+Lines Words Characters Property
+----- ----- ---------- --------
+  161
+
+<br>--------------------##END---------------------------<br>
 
 
 
