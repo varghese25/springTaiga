@@ -2648,6 +2648,59 @@ Lines Words Characters Property
 
 <br>--------------------##END---------------------------<br>
 
+##15-10-2024
+
+Docker Desktop Has Issue follow this 
+
+Quit Docker Desktop
+
+
+PS C:\Users\u> wsl -l -v
+  NAME              STATE           VERSION
+* Ubuntu            Running         2
+  docker-desktop    Running         2
+PS C:\Users\u> wsl --update
+Checking for updates.
+The most recent version of Windows Subsystem for Linux is already installed.
+PS C:\Users\u> wsl --version
+WSL version: 2.3.24.0
+Kernel version: 5.15.153.1-2
+WSLg version: 1.0.65
+MSRDC version: 1.2.5620
+Direct3D version: 1.611.1-81528511
+DXCore version: 10.0.26100.1-240331-1435.ge-release
+Windows version: 10.0.19045.5011
+PS C:\Users\u> wsl --set-default-version 2
+For information on key differences with WSL 2 please visit https://aka.ms/wsl2
+The operation completed successfully.
+PS C:\Users\u> wsl -l -v
+  NAME              STATE           VERSION
+* Ubuntu            Running         2
+  docker-desktop    Running         2
+PS C:\Users\u>
+
+
+## Issue Installing the Redis in Local Machine 
+Windows version: 10.0.19045.5011
+PS C:\Users\u> helm repo list
+NAME    URL
+bitnami https://charts.bitnami.com/bitnami
+brigade https://brigadecore.github.io/charts
+PS C:\Users\u> helm repo add bitnami https://charts.bitnami.com/bitnami
+"bitnami" already exists with the same configuration, skipping
+PS C:\Users\u>
+PS C:\Users\u>
+PS C:\Users\u> helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "bitnami" chart repository (https://charts.bitnami.com/bitnami):
+        Get "https://repo.broadcom.com/bitnami-files/index.yaml": read tcp 172.21.233.173:55110->172.66.0.165:443: read: connection reset by peer
+...Successfully got an update from the "brigade" chart repository
+Update Complete. ⎈Happy Helming!⎈
+PS C:\Users\u> helm install my-redis bitnami/redis
+Error: INSTALLATION FAILED: Kubernetes cluster unreachable: Get "http://localhost:8080/version": dial tcp 127.0.0.1:8080: connect: connection refused
+PS C:\Users\u>
+<br>--------------------##END---------------------------<br>
+
 
 
 
