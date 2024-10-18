@@ -2701,6 +2701,91 @@ Error: INSTALLATION FAILED: Kubernetes cluster unreachable: Get "http://localhos
 PS C:\Users\u>
 <br>--------------------##END---------------------------<br>
 
+## 18-10-2024
+ 
+    postgresql & Logig page<br>
+	
+	Spring Initiazer<br>
+	Java, Maven, SpringBoot 3.3.4<br>
+	
+	Dependences<br>
+	Lombok, <br>
+	Sprin Web, <br>
+	Spring Security,<br>
+	Postgre Sql Driver,<br>
+	Spring Data JPA,<br>
+	Java Mail Sender.<br>
+	
+	Project Metadata<br>
+	Group com.kpl<br>
+	Artifact ttm<br>
+	Name ttm<br>
+	Description ttm project for Spring Boot<br>
+	Package name com.kpl.ttm<br>
+	Packageing Jar<br>
+	Java 17<br>
+	
+application.Yml created in the Vscode updated database details below<br>
+
+
+
+postgresql<br>
+DATABASE Name is ttm ,<br>
+
+varghese@DESKTOP-OODIU93:~$ sudo -i -u postgres<br>
+postgres@DESKTOP-OODIU93:~$ psql<br>
+psql (14.13 (Ubuntu 14.13-0ubuntu0.22.04.1))<br>
+Type "help" for help.<br>
+
+postgres=# \l<br>
+                              List of databases<br>
+   Name    |  Owner   | Encoding | Collate |  Ctype  |   Access privileges
+-----------+----------+----------+---------+---------+-----------------------
+ postgres  | postgres | UTF8     | C.UTF-8 | C.UTF-8 |
+ template0 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |          |          |         |         | postgres=CTc/postgres
+ template1 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |          |          |         |         | postgres=CTc/postgres
+ ttm       | postgres | UTF8     | C.UTF-8 | C.UTF-8 |
+ varghese  | varghese | UTF8     | C.UTF-8 | C.UTF-8 | =Tc/varghese         +
+           |          |          |         |         | varghese=CTc/varghese<br>
+(5 rows)
+
+PASSWORD 'Tiju@25!';<br>
+--------------------------------------------------------------------------------------
+
+ISSUE occured while running the TtmApplication.java ,post 8080  LISTENING  3136<br>
+PS C:\Users\u> netstat -ano | findstr :8080<br>
+
+TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING       3136<br>
+TCP    [::]:8080              [::]:0                 LISTENING       3136<br>
+TCP    [::1]:8080             [::1]:64140            TIME_WAIT       0<br>
+
+powershell used to stop force fully<br>
+PS C:\Users\u>Stop-Process -Id 3136 -Force<br>
+
+PS C:\Users\u> netstat -ano | findstr :8080  #Executed this command to check wheather port listening it dint display which mean its clear#<br>
+
+Excuted the TtmApplication.java<br>
+
+http://localhost:8080/login<br>     <br> #local host spring default page opened. Under Process For custom page <br>
+
+
+
+
+##Git Commit ( LF will be replaced by CRLF the next time Git touches it)<br>
+
+PS E:\myWorks\springTaiga> git init<br>
+Reinitialized existing Git repository in E:/myWorks/springTaiga/.git/<br>
+PS E:\myWorks\springTaiga> git add .<br>
+warning: in the working copy of 'ttm/src/main/resources/application.yml', LF will be replaced by CRLF the next time Git touches it<br>
+PS E:\myWorks\springTaiga> git config --global core.autocrlf true<br>
+PS E:\myWorks\springTaiga> git config --global core.autocrlf false<br>
+PS E:\myWorks\springTaiga> git add --renormalize .<br>
+<br>--------------------##END---------------------------<br>
+
+
+
 
 
 
