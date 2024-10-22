@@ -6,8 +6,8 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ttm
-    username: 
-    password: 
+    username: u
+    password: Tiju@25! 
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -15,5 +15,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format-sql: true 
-        show-sql: true  
+        show-sql: true
+        open-in-view: false  
 

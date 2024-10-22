@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TtmApplication<ttm>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.kpl.ttm.TtmApplication",
+            "projectName": "ttm",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
