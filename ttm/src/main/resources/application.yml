@@ -1,4 +1,5 @@
 server:
+  port: 8080
   error:
     include-message: always 
     include-binding-errors: always  
@@ -17,4 +18,8 @@ spring:
         format-sql: true 
         show-sql: true
         open-in-view: false  
+        jsp:
+    prefix: /WEB-INF/jsp/
+    suffix: .jsp
+
 
