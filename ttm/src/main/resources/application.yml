@@ -1,25 +1,19 @@
 server:
-  port: 8080
   error:
-    include-message: always 
-    include-binding-errors: always  
+    include-message: always
+    include-binding-errors: always
 
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ttm
     username: u
-    password: Tiju@25! 
+    password: Tiju@25!
   jpa:
     hibernate:
       ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        format-sql: true 
-        show-sql: true
-        open-in-view: false  
-        jsp:
-    prefix: /WEB-INF/jsp/
-    suffix: .jsp
-
-
+        format-sql: true
+      show-sql: true
+  

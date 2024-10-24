@@ -10,12 +10,12 @@ public class ContentController {
    @GetMapping("/login")
     public String login() {
         System.out.println("login successfully!!!");
-    return "login";
+        return "loginPage";
     }
 
     @GetMapping("/req/signup")
     public String signup() {
-        return "signup";
+        return "signupPage";
     }
 
 }
