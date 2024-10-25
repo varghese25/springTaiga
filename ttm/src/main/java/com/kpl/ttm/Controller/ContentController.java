@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ContentController {
 
    @GetMapping("/login")
-    public String login() {
-        System.out.println("login successfully!!!");
+    public String showIndex() {
         return "loginPage";
     }
 
