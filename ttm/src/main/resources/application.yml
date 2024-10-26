@@ -17,7 +17,3 @@ spring:
         format-sql: true
       show-sql: true
 
-logging:
-  level:
-    '[org.hibernate]': DEBUG
-    

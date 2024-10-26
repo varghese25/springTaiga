@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TTM SIGN UP</title>
+    <title>TTMS SIGN UP</title>
     <link rel="icon" type="favicom" href="/img/ttm-Icon-new.png">
     <link rel="stylesheet" href="/css/style.css">
     <script src="./signup.js" defer></script>
     <script type="module" src="//unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
+
 <body>
     <section>
         <form action="/req/signup" method="post">
-               <h1>TTM Sign Up</h1>
+            <h1>TTMS Sign Up</h1>
             <div class="inputbox">
                 <ion-icon name="person-outline"></ion-icon>
                 <input type="text" name="name" required>
@@ -36,4 +38,37 @@
         </form>
     </section>
 </body>
+
 </html>
+<script>
+    const submitButttom = document.getElementById("submit");
+    submitButttom.addEventListener('click',()=>{
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('passwordcon').value;
+      const email = document.getElementById('email').value;
+      const data ={
+        username,
+        email,
+        password
+      }
+      
+      if(password == confirmPassword){
+        const jsonData = JSON.stringify(data);
+        fetch('/req/signup', {
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+          body: jsonData
+        })
+        .then(response =>{
+          //alert('succesfull');
+          //if(response.status == 200){
+            //alert('succesfull');
+          //xs}
+        })
+      }
+      
+    })
+</script>

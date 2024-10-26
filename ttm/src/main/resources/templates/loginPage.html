@@ -3,7 +3,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>TTMS Login</title>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <link rel="icon" type="favicom" href="/img/ttm-Icon-new.png">
@@ -13,12 +13,13 @@
 <body>
     <section>
         <form action="/login" method="post">
-            <h1>Login</h1>
+            <h1>TTMS Login</h1>
             <div class="dialog-row">
-                <label th:if="${param.error}" th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" class="text-center redText"></label>                   
-            </div>
+                <label th:if="${param.error}" class="text-center redText">
+                    <span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION?.message}"></span>
+                </div>
             <div class="inputbox">
-                <ion-icon name="email-outline"></ion-icon>
+                <ion-icon name="person-outline"></ion-icon>
                 <input name="username" id="username"type="name" required>
                 <label for="">username</label>
             </div>
