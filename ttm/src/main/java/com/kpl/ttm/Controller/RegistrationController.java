@@ -12,18 +12,17 @@ import com.kpl.ttm.Model.MyAppUserRepository;
 @RestController
 public class RegistrationController { /* Code To handle */
 
-@Autowired
-private MyAppUserRepository myAppUserRepository;
+    @Autowired
+    private MyAppUserRepository myAppUserRepository;
 
-@Autowired
-private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-
-
-@PostMapping(value = "/req/signup", consumes = "application/json")
-public MyAppUser createUser(@RequestBody MyAppUser user){
-    user.setPassword(passwordEncoder.encode(user.getPassword()));
-    return myAppUserRepository.save(user);
-}
+    @PostMapping(value = "/req/signup", consumes = "application/json")
+    public MyAppUser createUser(@RequestBody MyAppUser user) {
+        System.out.println("Received user data: " + user);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return myAppUserRepository.save(user);
+    }
 
 }

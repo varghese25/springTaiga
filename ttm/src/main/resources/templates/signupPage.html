@@ -18,57 +18,33 @@
             <h1>TTMS Sign Up</h1>
             <div class="inputbox">
                 <ion-icon name="person-outline"></ion-icon>
-                <input type="text" name="name" required>
+                <input type="text" id= "username" name="username" required>
                 <label for="name">Name</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
-                <input type="email" name="email" required>
+                <input type="email" id="email" name="email" required>
                 <label for="email">Email</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" name="password" required>
+                <input type="password" id="password" name="password" required>
                 <label for="password">Password</label>
             </div>
+            <div class="inputbox">
+              <ion-icon name="lock-closed-outline"></ion-icon>
+              <input type="password" id="passwordcon" name="passwordcon" required>
+              <label for="">Confirm Password</label>
+            </div> 
             <button type="submit">Sign Up</button>
             <div class="register">
                 <p>Already have an account? <a href="#">Log In</a></p>
             </div>
         </form>
     </section>
+    <!-- Copyright Section -->
+    <footer class="copyright">
+      <p>© <span id="year"></span> TTM System. All rights reserved.</p>
+  </footer>
 </body>
-
 </html>
-<script>
-    const submitButttom = document.getElementById("submit");
-    submitButttom.addEventListener('click',()=>{
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('passwordcon').value;
-      const email = document.getElementById('email').value;
-      const data ={
-        username,
-        email,
-        password
-      }
-      
-      if(password == confirmPassword){
-        const jsonData = JSON.stringify(data);
-        fetch('/req/signup', {
-          method: 'POST',
-          headers:{
-            'Content-Type': 'application/json'
-          },
-          body: jsonData
-        })
-        .then(response =>{
-          //alert('succesfull');
-          //if(response.status == 200){
-            //alert('succesfull');
-          //xs}
-        })
-      }
-      
-    })
-</script>

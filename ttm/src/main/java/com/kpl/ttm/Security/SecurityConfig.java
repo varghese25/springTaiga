@@ -31,6 +31,7 @@ public class SecurityConfig {
       return appUserService;
 
    }
+
    @Bean /*Authication Provdier*/
 
    public AuthenticationProvider authenticationProvider() {

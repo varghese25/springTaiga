@@ -1,24 +1,36 @@
 package com.kpl.ttm.Model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 
 @Entity
 public class MyAppUser { /* Model to create database Schema */
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) /* Primary Key */
     private Long id;
+
    /*Column*/
     @Column(nullable = false, unique = true, length = 50)
     private String username;
+
     @Column(nullable = false, unique = true, length = 100)
     private String email;
+    
     @Column(nullable = false)
     private String password;
 
-    // Getters and setters
+  
     public Long getId() {
         return id;
     }
+
+      // Getters and setters
 
     public void setId(Long id) {
         this.id = id;

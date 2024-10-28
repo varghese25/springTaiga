@@ -1,11 +1,9 @@
 
-
 package com.kpl.ttm.Model;
 
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.*;
-
 
 
 /*InterFace Interact with Database Finding saving the Entity, Retive specific user from the database*/
@@ -13,8 +11,6 @@ import java.util.*;
 
 @Repository
 public interface MyAppUserRepository extends JpaRepository<MyAppUser, Long> {
-Optional<MyAppUser> findByUsername(String username);
+    Optional<MyAppUser> findByUsername(String username);
 
-
-    
 }

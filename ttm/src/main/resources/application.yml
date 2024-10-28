@@ -17,3 +17,8 @@ spring:
         format-sql: true
       show-sql: true
 
+logging:
+  level:
+    ROOT: DEBUG
+    '[org.springframework.web]': DEBUG
+    '[org.hibernate]': ERROR
