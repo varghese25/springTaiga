@@ -19,10 +19,8 @@ public class RegistrationController { /* Code To handle */
     private PasswordEncoder passwordEncoder;
 
     @PostMapping(value = "/req/signup", consumes = "application/json")
-    public MyAppUser createUser(@RequestBody MyAppUser user) {
-        System.out.println("Received user data: " + user);
+    public MyAppUser createUser(@RequestBody MyAppUser user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return myAppUserRepository.save(user);
     }
-
 }

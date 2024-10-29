@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 /*Service and class used Depenedancy Injection*/
 @Service
 @AllArgsConstructor
-public class MyAppUserService implements UserDetailsService {
+public class MyAppUserService implements UserDetailsService{
 
     @Autowired
     private MyAppUserRepository repository;
@@ -30,8 +30,7 @@ public class MyAppUserService implements UserDetailsService {
                     .password(userObj.getPassword())
                     .build();
 
-        }
-        else {
+        } else {
             throw new UsernameNotFoundException(username);
         }
     }

@@ -57,7 +57,6 @@ public class SecurityConfig {
                      .loginPage("/login").permitAll();
 
             })
-
             .authorizeHttpRequests(registry -> {
                registry.requestMatchers("/req/signup", "/login", "/css/**", "/js/**", "/img/**").permitAll(); /*Allow Static Resourses*/
                                                                                                                
