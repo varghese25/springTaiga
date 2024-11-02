@@ -53,13 +53,11 @@ public class SecurityConfig {
       return httpSecurity
             .csrf(AbstractHttpConfigurer::disable) /* Diabled not recommended in production learning Purpose */
             .formLogin(httpForm -> {
-               httpForm
-                     .loginPage("/login").permitAll();
+               httpForm.loginPage("/login").permitAll();
 
             })
             .authorizeHttpRequests(registry -> {
                registry.requestMatchers("/req/signup", "/login", "/css/**", "/js/**", "/img/**").permitAll(); /*Allow Static Resourses*/
-                                                                                                               
                registry.anyRequest().authenticated(); /*  All other requests require authentication*/
             })
 

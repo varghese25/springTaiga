@@ -53,6 +53,7 @@
         <dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
+			<version>42.2.20</version> 
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -71,7 +72,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<build>
+	<build>	
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
