@@ -5,14 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 
 @Entity
+@Table(name = "my_app_user")
 public class MyAppUser { /* Model to create database Schema */
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) /* Primary Key */
+    @GeneratedValue(strategy = GenerationType.IDENTITY) /* Primary Key */
     private Long id;
 
    /*Column*/
