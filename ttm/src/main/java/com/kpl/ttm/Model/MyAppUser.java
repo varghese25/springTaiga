@@ -9,12 +9,12 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "my_app_user")
+@Table(name = "my_app_user") // PostGre DB 
 public class MyAppUser { /* Model to create database Schema */
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) /* Primary Key */
+    @GeneratedValue(strategy = GenerationType.IDENTITY) /* Primary Key Postgre It should be Identity not in Auto for mySql*/
     private Long id;
 
    /*Column*/

@@ -2786,12 +2786,32 @@ PS E:\myWorks\springTaiga> git add --renormalize .<br>
 
 
 
+## 05-11-2024<br>
+##ERROR 
+##UserDetails Not Posted In the PostGre DataBase<br>
+
+##2024-11-05T12:36:47.570-05:00 WARN 13564 --- [nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'application/x-www-form-urlencoded' is not supported]<br>
+
+ /* Allowed Multiple Content Types both JSON and application/x-www-form-urlencoded data. It started Post UserDetails in Postgre Database.."application/x-www-form-urlencoded" Enable SignUpage */
+    @PostMapping(value = "/req/signup", consumes = {"application/json", "application/x-www-form-urlencoded"})
+    public MyAppUser createUser(MyAppUser user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return myAppUserRepository.save(user);
+    }
+}<br>
+
+
+##SignUpPage.html
+fetch('/req/signup', {
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/jsonx-www-form-urlencoded' // Allow Multiple Content Type To post in Postgre DB
+          },
+          body: jsonData <br>
 
 
 
-
-
-
+<br>--------------------##END---------------------------<br>
 
 
 

@@ -19,6 +19,6 @@ spring:
 
 logging:
   level:
-    ROOT: DEBUG
+    ROOT: DEBUG   
     '[org.springframework.web]': DEBUG
     '[org.hibernate]': ERROR
