@@ -22,5 +22,6 @@ public class RegistrationController { /* Code To handle */
     public MyAppUser createUser(MyAppUser user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return myAppUserRepository.save(user);
+        
     }
 }
