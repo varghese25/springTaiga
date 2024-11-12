@@ -54,9 +54,16 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable) /* Diabled not recommended in production learning Purpose */
             .formLogin(httpForm -> {
                httpForm.loginPage("/login").permitAll();
-               httpForm.defaultSuccessUrl("/index");
+               httpForm.defaultSuccessUrl("/index",true);// Redirect after successful login
 
             })
+            //Logout 12/11/24
+            .logout(logout -> {
+               logout.logoutUrl("/signout")// Default logout URL
+                     .logoutSuccessUrl("/login?logout=true") // Redirect to login with logout=true param
+                     .invalidateHttpSession(true)// Invalidate the session
+                     .clearAuthentication(true); // Clear authentication
+           })
             .authorizeHttpRequests(registry -> {
                registry.requestMatchers("/req/signup", "/login", "/css/**", "/js/**", "/img/**").permitAll(); /*Allow Static Resourses*/
                registry.anyRequest().authenticated(); /*  All other requests require authentication*/

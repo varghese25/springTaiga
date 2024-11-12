@@ -14,6 +14,11 @@
     <section>
         <form action="/login" method="post">
             <h1>TTMS Login</h1>
+             <!-- Logout Success Message 12/11/24 -->
+             <c:if test="${param.logout != null and param.logout == 'true'}">
+                <p style="color: green; text-align: center;">You have been logged out successfully.</p>
+            </c:if>
+             <!-- Error Message (if login fails) -->
             <div class="dialog-row">
                 <label th:if="${param.error}" class="text-center redText">
                     <span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION?.message}"></span>
