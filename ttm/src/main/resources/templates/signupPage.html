@@ -46,9 +46,9 @@
     <footer class="copyright">
       <p>© <span id="year"></span> TTM System. All rights reserved.</p>
   </footer>
-</body>
-</html>
 <script>
+  // Set the current year in the footer
+  document.getElementById('year').textContent = new Date().getFullYear();
     // Signup form submit logic
     const submitButttom = document.getElementById("submit");
     submitButttom.addEventListener('click',()=>{
@@ -81,3 +81,5 @@
       
     })
 </script>
+</body>
+</html>

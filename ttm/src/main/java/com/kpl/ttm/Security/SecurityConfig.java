@@ -65,7 +65,7 @@ public class SecurityConfig {
                      .clearAuthentication(true); // Clear authentication
            })
             .authorizeHttpRequests(registry -> {
-               registry.requestMatchers("/req/signup", "/login", "/css/**", "/js/**", "/img/**").permitAll(); /*Allow Static Resourses*/
+               registry.requestMatchers("/req/signup", "/login", "/index", "/css/**", "/js/**", "/img/**").permitAll(); /*Allow Static Resourses*/
                registry.anyRequest().authenticated(); /*  All other requests require authentication*/
             })
 

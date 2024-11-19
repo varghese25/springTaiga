@@ -67,6 +67,7 @@
         <a href="#Exam Portal">Exam</a>
         <a href="#Result">Result</a>
         <a href="#Staff Records">Staff Records</a>
+        <a href="#Reports">Reports</a>
         <a href="#TechSupport">Contact</a>
          <!-- Other links 12/11/24 -->
          <a href="/signout">Sign Out</a> <!--Sign Out link -->
@@ -77,7 +78,11 @@
            <h1><justify> Prototype Of Learning Based ERP System</justify></h1>
     </main>
     <footer>
-        <p>TTM Systems &copy; 2024</p>
+        <p>&copy; <span id="year"></span> TTM System</p>
     </footer>
+    <script>
+        // Dynamically set the current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

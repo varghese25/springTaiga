@@ -16,7 +16,6 @@
             <h1>TTMS Login</h1>
              <!-- Logout Success Message 12/11/24 -->
              <c:if test="${param.logout != null and param.logout == 'true'}">
-                <p style="color: green; text-align: center;">You have been logged out successfully.</p>
             </c:if>
              <!-- Error Message (if login fails) -->
             <div class="dialog-row">
@@ -52,5 +51,9 @@
    <footer class="copyright">
     <p>© <span id="year"></span> TTM System. All rights reserved.</p>
 </footer>
+<script>
+    // Get the current year and set it to the span with id 'year'
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
