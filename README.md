@@ -1,3 +1,11 @@
+##TTM Project<br>
+
+##Truncate removes row record and ensures the id column will begin counting from 1.<br>
+TRUNCATE TABLE my_app_user RESTART IDENTITY;<br> 
+SELECT pg_get_serial_sequence('my_app_user', 'id');<br>
+ALTER SEQUENCE my_app_user_id_seq RESTART WITH 1;<br>
+
+
 <b>Taiga And GitHub Intergration</b><br> Date 10/09/2024<br>
 
 Step 1 : Payload URL from taiga<br>
@@ -2813,6 +2821,8 @@ fetch('/req/signup', {
 
 <br>--------------------##END---------------------------<br>
 
+
+<br> Day To Day Document Updated From Top 21-11-2024<br>
 
 
 
