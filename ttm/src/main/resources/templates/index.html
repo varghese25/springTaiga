@@ -37,6 +37,36 @@
             color: black;
         }
 
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
         main {
             padding: 20px;
         }
@@ -62,7 +92,17 @@
         <a href="#Admission">Admission</a>
         <a href="#Online Fees">Fees</a>
         <a href="#Student Records">Student Record</a>
+
+         <!-- Dropdown for Time Table -->
         <a href="#Time Table">Time Table</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Time Table</a>
+            <div class="dropdown-content">
+                <a href="#ViewTimeTable">View Time Table</a>
+                <a href="#EditTimeTable">Edit Time Table</a>
+                <a href="#AddTimeTable">Add New Time Table</a>
+            </div>
+        </div>
         <a href="#Attendance">Student Attendance</a>
         <a href="#Exam Portal">Exam</a>
         <a href="#Result">Result</a>

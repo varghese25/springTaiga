@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Timetable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #000;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .break {
+            background-color: #ffeb3b;
+            font-weight: bold;
+        }
+        .lunch {
+            background-color: #c8e6c9;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>School Timetable</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>09:00-09:45 AM</td>
+                <td>English</td>
+                <td>Tamil</td>
+                <td>Games</td>
+                <td>Tamil</td>
+                <td>PT</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>09:45-10:15 AM</td>
+                <td>Tamil</td>
+                <td>English</td>
+                <td>Games</td>
+                <td>Tamil</td>
+                <td>Tamil</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="break">
+                <td>10:15-10:30 AM</td>
+                <td colspan="7">Break</td>
+            </tr>
+            <tr>
+                <td>10:30-11:15 AM</td>
+                <td>Science</td>
+                <td>Maths</td>
+                <td>Maths</td>
+                <td>Social Science</td>
+                <td>Tamil</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>11:15-12:00 PM</td>
+                <td>Social Science</td>
+                <td>Social Science</td>
+                <td>Maths</td>
+                <td>English</td>
+                <td>Science</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="lunch">
+                <td>12:00-12:45 PM</td>
+                <td colspan="7">Lunch Break</td>
+            </tr>
+            <tr>
+                <td>12:45-01:30 PM</td>
+                <td>Maths</td>
+                <td>Library</td>
+                <td>Tamil</td>
+                <td>Library</td>
+                <td>Library</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>01:30-02:15 PM</td>
+                <td>Library</td>
+                <td>Library</td>
+                <td>English</td>
+                <td>Science</td>
+                <td>English</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="break">
+                <td>02:15-02:30 PM</td>
+                <td colspan="7">Break</td>
+            </tr>
+            <tr>
+                <td>02:30-03:15 PM</td>
+                <td>Tamil</td>
+                <td>English</td>
+                <td>Science</td>
+                <td>PT</td>
+                <td>Maths</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
