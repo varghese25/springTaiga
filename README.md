@@ -1,3 +1,24 @@
+
+
+
+05-12-2024<br>
+## PS E:\myWorks\springTaiga> Remove-Item -Recurse -Force node_modules<br>
+which remove the node_modules either we can add gitignore which wont track the modules.Node module files 
+has heavy dependancy so it is hard to track the changes best way to give gitignore. <br>
+
+Learned from HubSpot Developer Certification. When i try colloabe my TTM code with HubSpot.<br>
+
+npm install @hubspot/cli<br> // Intall node modules
+npx hs init<br> // Hubspot Sandbox for authencation and many other useCase.
+
+
+Passed Certifcation of Hubspot Reporting<br>
+
+
+<----------------------------------------------------------------------------------------->
+
+
+
 ##TTM Project<br>
 
 ##Truncate removes row record and ensures the id column will begin counting from 1.<br>
